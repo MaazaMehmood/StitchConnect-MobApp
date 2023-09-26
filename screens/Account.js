@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   login: {
-    color: '#A98ADC',
+    color: '#755ED1',
     textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const HorizontalLine = () => {
+const Seperator = () => {
   return (
     <View style={styles.line}></View>
   );
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HorizontalLine;
+export default Seperator;

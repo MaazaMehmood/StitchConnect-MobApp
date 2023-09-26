@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image,TouchableOpacity, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Image,TouchableOpacity, TextInput, Keyboard,TouchableWithoutFeedback , StyleSheet } from 'react-native';
 
 
 
@@ -13,6 +13,7 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     // Add login logic, API calls, authentication, etc.
+
     console.log('Email:', nameEmail);
     console.log('Password:', password);
 
@@ -20,43 +21,46 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-        <Image
-            source={require('../assets/images/SC.png')}
-            style={styles.logoImage}
-            resizeMode="contain"
-        />
+    <>
+    <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
+      <View style={styles.container}>
+          <Image
+              source={require('../assets/images/SC.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+          />
 
-        <Text style={styles.title}>Login</Text>
+          <Text style={styles.title}>Login</Text>
 
-        <TextInput
-            style={styles.input}
-            placeholder="Username / Email"
-            onChangeText={(text) => setNameEmail(text)}
-            value={nameEmail}
-        />
-        <TextInput
-            style={styles.input}
-            placeholder="Password"
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            secureTextEntry
-        />
+          <TextInput
+              style={styles.input}
+              placeholder="Username / Email"
+              onChangeText={(text) => setNameEmail(text)}
+              value={nameEmail}
+          />
+          <TextInput
+              style={styles.input}
+              placeholder="Password"
+              onChangeText={(text) => setPassword(text)}
+              value={password}
+              secureTextEntry
+          />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleLogin}
-        >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleLogin}
+          >
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-            onPress={handleSignup}
-        >
-            <Text style={styles.signup}>Don't have an account? Sign up</Text>
-        </TouchableOpacity>
-
-    </View>
+          <TouchableOpacity
+              onPress={handleSignup}
+          >
+              <Text style={styles.signup}>Don't have an account? Sign up</Text>
+          </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
+    </>
   );
 };
 
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     paddingRight: 55,
     paddingLeft: 55,
     borderRadius: 50,
-    backgroundColor: '#A98ADC',
+    backgroundColor: '#755ED1',
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   signup: {
-    color: '#A98ADC',
+    color: '#755ED1',
     textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',

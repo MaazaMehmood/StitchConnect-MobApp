@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import HorizontalLine from '../components/HorizontalLine';
+import { View, Text, TextInput, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet } from 'react-native';
+import Seperator from '../components/Seperator';
 
 
-const Signup = ({ navigation, route }) => {
+const Signup = ({ route }) => {
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [contact, setContact] = useState('');
   const [gender, setGender] = useState('');
-  const [photo, setPhoto] = useState('');
 
   const { accountType } = route.params;
   
@@ -26,19 +26,21 @@ const Signup = ({ navigation, route }) => {
     console.log('Account Type:', accountType);
     // send the data to server for registration 
     
-    navigation.navigate('Profile');
   };
 
   return (
        
-    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-   
+    <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
+    <ScrollView 
+      contentContainerStyle={styles.scrollViewContainer}
+      showsVerticalScrollIndicator={false}
+    >
       <Text style={styles.title}>Sign Up</Text>
       
-      <View>
+      <View style={styles.view} >
         <View >
           <Text style={styles.account}>Personal</Text>
-          <HorizontalLine/>
+          <Seperator/>
         </View>
 
         <TextInput
@@ -79,36 +81,28 @@ const Signup = ({ navigation, route }) => {
             onChangeText={(text) => setGender(text)}
             value={gender}
         />
-        <TextInput
-                  style={styles.input}
-                  placeholder="profile photo (optional)"
-                  onChangeText={(text) => setPhoto(text)}
-                  value={photo}
-              />
 
         {accountType === 'Business Account' && (
           <View>
-              
               <View >
                 <Text style={styles.account}>Business Description</Text>
-                <HorizontalLine/>
+                <Seperator/>
               </View>
               
               <TextInput
+                  multiline
                   style={styles.input}
                   placeholder="Address / Location*"
-                  multiline={true}
-                  numberOfLines={3}
                   onChangeText={(text) => setAddress(text)}
                   value={address}
               />
               <TextInput
+                  multiline
                   style={styles.input}
                   placeholder="Business Description*"
-                  multiline={true}
-                  numberOfLines={6}
                   onChangeText={(text) => setBusinessDescription(text)}
                   value={businessDescription}
+                  maxLength={100}
               />
               <TextInput
                   style={styles.input}
@@ -132,8 +126,8 @@ const Signup = ({ navigation, route }) => {
       >
         <Text style={styles.buttonText}>Sign up</Text>
       </TouchableOpacity>
-
-    </ScrollView>      
+    </ScrollView>  
+    </TouchableWithoutFeedback>    
     
   );
 };
@@ -160,6 +154,9 @@ const styles = StyleSheet.create({
     color: '#424242',
     padding: 5,
   },
+  view: {
+    marginBottom: 30,
+  },
   input: {
     width: '100%',
     height: 50,
@@ -174,8 +171,8 @@ const styles = StyleSheet.create({
     paddingRight: 55,
     paddingLeft: 55,
     borderRadius: 50,
-    backgroundColor: '#A98ADC',
-    margin: 10,
+    backgroundColor: '#755ED1',
+    margin: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },
