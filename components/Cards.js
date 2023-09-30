@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textContainer: {
+    flexDirection: 'col',
+    justifyContent: 'left',
+    alignItems: 'left',
     width: '100%',
     height: '100%',
     flexWrap: 'wrap',
@@ -51,6 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   details: {
+    // flexWrap: 'wrap',
     fontSize: 13,
     color: '#444',
   },

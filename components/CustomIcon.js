@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 const CustomIcon = ({ iconName, color}) => {
-  return <Ionicons name={iconName} color={color} size={23} />;
+  return <Ionicons name={iconName} color={color} size={21} />;
 };
 
 export default CustomIcon;

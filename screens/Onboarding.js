@@ -11,7 +11,7 @@ const Onboarding = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/images/bg(1).jpg')}
+        source={require('../assets/images/bg.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'relative',
-    marginBottom: '-90%',
+    marginBottom: '-100%',
     padding: 15,
     paddingRight: 55,
     paddingLeft: 55,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   buttonText: {
-    color: 'white',
+    color: '#ffff',
     fontSize: 18,
     fontWeight: 'bold',
   },

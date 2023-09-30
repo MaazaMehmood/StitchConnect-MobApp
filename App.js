@@ -15,10 +15,11 @@ import Login from './screens/Login';
 import Account from './screens/Account';
 import Home from './screens/Home';
 import UserProfile from './screens/UserProfile';
-import Notifications from './screens/Notifications';
-import Settings from './screens/settings';
 import Orders from './screens/Orders';
 import Portfolio from './screens/Portfolio';
+import Notifications from './screens/Notifications';
+import Settings from './screens/Settings';
+
 
 
 
@@ -32,7 +33,7 @@ const DrawerNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         drawerActiveTintColor: '#ffff', // color of the active component
-        drawerActiveBackgroundColor: '#755ED1',
+        drawerActiveBackgroundColor: '#9579E3',
         drawerInactiveTintColor: 'gray', // color of inactive components
         drawerLabelStyle: {
           fontSize: 16,
@@ -68,10 +69,16 @@ const DrawerNavigator = () => {
         }}} 
       />
       <Drawer.Screen name="Portfolio" component={Portfolio} 
-        options={{ drawerIcon: ({ focused }) => {
+        options={({ navigation }) => ({
+        headerRight: () => (
+          <TouchableOpacity style={{ marginRight: 15 }} >
+            <CustomIcon iconName="heart-outline" color="#755ED1" />
+          </TouchableOpacity>
+        ),
+        drawerIcon: ({ focused }) => {
           const activeColor = focused ? 'white' : '#22CCDD';
-          return <AntDesign name="profile" size={23} color={activeColor} />
-        }}} 
+          return <AntDesign name="profile" size={23} color={activeColor} />}
+        })}
       />
       <Drawer.Screen name="Notifications" component={Notifications} 
         options={{ drawerIcon: ({ focused }) => {

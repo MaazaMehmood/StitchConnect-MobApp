@@ -3,6 +3,7 @@
     "name": "stitch-connect",
     "slug": "stitch-connect",
     "version": "1.0.0",
+    "entryPoint": "./App.js",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,6 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "start": "expo start",
     "assetBundlePatterns": [
       "**/*"
     ],

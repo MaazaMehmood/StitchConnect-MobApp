@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   label: {
     color: '#424242',
     fontSize: 15,
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
     marginBottom: 5,
     marginTop: 10,
   },
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     paddingRight: 55,
     paddingLeft: 55,
     borderRadius: 50,
-    backgroundColor: '#755ED1',
+    backgroundColor: '#9579E3',
     margin: 50,
     justifyContent: 'center',
     alignItems: 'center',

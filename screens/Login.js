@@ -6,6 +6,7 @@ import { View, Text, Image,TouchableOpacity, TextInput, Keyboard,TouchableWithou
 const Login = ({ navigation }) => {
   const [nameEmail, setNameEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [accountType, setAccountType] = useState('');
   
   const handleSignup = () => {
     navigation.navigate('Account');
@@ -16,6 +17,7 @@ const Login = ({ navigation }) => {
 
     console.log('Email:', nameEmail);
     console.log('Password:', password);
+    console.log('Account type:', accountType);
 
     navigation.navigate('Home');
   };
@@ -44,6 +46,12 @@ const Login = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               value={password}
               secureTextEntry
+          />
+          <TextInput
+              style={styles.input}
+              placeholder="Account type"
+              onChangeText={(text) => setAccountType(text)}
+              value={accountType}
           />
 
           <TouchableOpacity
@@ -98,7 +106,7 @@ const styles = StyleSheet.create({
     paddingRight: 55,
     paddingLeft: 55,
     borderRadius: 50,
-    backgroundColor: '#755ED1',
+    backgroundColor: '#9579E3',
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   signup: {
-    color: '#755ED1',
+    color: '#9579E3',
     textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',
