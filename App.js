@@ -22,7 +22,6 @@ import Settings from './screens/Settings';
 
 
 
-
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 

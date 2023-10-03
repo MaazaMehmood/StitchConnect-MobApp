@@ -3,7 +3,8 @@ import { View, Text, Image,TouchableOpacity, TextInput, Keyboard,TouchableWithou
 
 
 
-const Login = ({ navigation }) => {
+function Login ({ navigation }) {
+  
   const [nameEmail, setNameEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('');

@@ -10,6 +10,7 @@ const thumbMeasure = (width - 48 - 32) / 3;
 
 
 function Portfolio  () {
+  
   return (
     <View style={styles.profile}>
       <View style={styles.profileContainer}>
@@ -26,10 +27,10 @@ function Portfolio  () {
               <View style={styles.info}>
                 <View style={{ marginTop: 20, paddingBottom: 24, flexDirection: 'row', justifyContent: 'center' }}>
                   <TouchableOpacity
-                    style={[styles.button, { backgroundColor: '#571DD2' }]}
+                    style={[styles.button, { borderWidth: 1, borderColor: '#571DD2', backgroundColor: 'transparent' }]}
                     // onPress={}
                   >
-                    <Text style={styles.buttonText}>Message</Text>
+                    <Text style={[styles.buttonText, { color: '#571DD2'}]}>Message</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.button, { backgroundColor: '#9579E3' }]}
@@ -40,15 +41,15 @@ function Portfolio  () {
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Rating</Text>
                   </View>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>10</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>10</Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Photos</Text>
                   </View>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>89</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>89</Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Orders</Text>
                   </View>
                 </View>
@@ -74,7 +75,7 @@ function Portfolio  () {
                   <Text style={{ color: "#5E72E4", fontSize: 14, marginLeft: 20 }}>Upload Photos</Text>
                 </TouchableOpacity>
               </View>
-              <View style={{ paddingBottom: 20, margin: 5 }}>
+              <View style={{ paddingBottom: 20, margin: 10 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                   {/* {Images.Viewed.map((img, imgIndex) => ( */}
                     <Image
@@ -150,9 +151,9 @@ const styles = StyleSheet.create({
   profileCard: {
     position: "relative",
     padding: 10,
-    marginBottom: 100,
-    marginHorizontal: 20,
-    marginTop: 80,
+    marginBottom: 80,
+    marginHorizontal: 3,
+    marginTop: '40%',
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
     backgroundColor: "#ffff",
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#ffff',
     fontSize: 15,
     letterSpacing: .5
   },

@@ -1,22 +1,27 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 
 
-const Onboarding = ({ navigation }) => {
+function Onboarding ({ navigation }) {
 
-    const handleLogin = () => {
-        navigation.navigate('Login');
-    };
+  const handleLogin = () => {
+      navigation.navigate('Login');
+  };
 
   return (
     <View style={styles.container}>
-      <Image
+      <ImageBackground
         source={require('../assets/images/bg.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
+      {/* <Image
+        source={require('../assets/images/SC.png')}
+        style={styles.logoImage}
+        resizeMode="contain"
+      /> */}
       
-      <Text style={styles.titletext}>Lets Get Started</Text>
+      <Text style={styles.titleText}>Lets Get Started</Text>
       
       <Text style={styles.text}>Stitching Stories Of Style And Grace</Text>
       
@@ -30,6 +35,7 @@ const Onboarding = ({ navigation }) => {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -41,26 +47,33 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  titletext: {
-    textAlign: 'left',
-    fontSize: 50,
+  // logoImage: {
+  //   position: 'relative',
+  //   borderRadius: 100,
+  //   width: 230,
+  //   height: 230,
+  //   marginVertical: '35%',
+  // },
+  titleText: {
+    textAlign: 'center',
+    fontSize: 40,
     fontWeight: 'medium',
-    letterSpacing: 3,
-    color: 'white',
+    letterSpacing: 2,
+    color: '#ffff',
     margin: 10,
-    paddingRight:100
+    paddingHorizontal: 10
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'light',
     fontStyle: 'italic',
     color: 'white',
     opacity: .6,
-    marginBottom: 50,
+    paddingBottom: 50
   },
   button: {
     position: 'relative',
-    marginBottom: '-100%',
+    marginBottom: '-115%',
     padding: 15,
     paddingRight: 55,
     paddingLeft: 55,

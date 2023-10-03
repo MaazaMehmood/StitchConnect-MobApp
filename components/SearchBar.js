@@ -15,7 +15,10 @@ const SearchBar = ({ onSearch }) => {
         <TextInput
             style={styles.input}
             placeholder="Search by category"
-            onChangeText={(text) => setCategory(text)}
+            onChangeText={(text) => {
+              onSearch(text)
+              setCategory(text)
+            }}
             value={category}
         />
         <TouchableOpacity onPress={handleSearch} style={styles.button} >
@@ -36,6 +39,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     borderWidth: 1,
+    color: '#777',
     borderColor: '#ccc',
     borderRadius: 10,
     paddingVertical: 8,

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet } from 'react-native';
-import Seperator from '../components/Seperator';
+import { View, Text, TextInput, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
+// import Seperator from '../components/Seperator';
 // import SelectInput from '../components/SelectInput';
 
+// const { width, height } = Dimensions.get("screen");
 
-const Signup = ({ route }) => {
+
+function Signup ({ route }) {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -44,22 +46,26 @@ const Signup = ({ route }) => {
           <View style={styles.view} >
             <View >
               <Text style={styles.account}>Personal</Text>
-              <Seperator/>
+              {/* <Seperator/> */}
             </View>
 
             <TextInput
+                
                 style={styles.input}
                 placeholder="First Name*"
                 onChangeText={(text) => setFirstName(text)}
                 value={firstName}
             />
             <TextInput
+                
                 style={styles.input}
                 placeholder="Last Name*"
                 onChangeText={(text) => setLastName(text)}
                 value={lastName}
             />
             <TextInput
+                multiline={true}
+                numberOfLines={2}
                 style={styles.input}
                 placeholder="Email"
                 onChangeText={(text) => setEmail(text)}
@@ -90,38 +96,47 @@ const Signup = ({ route }) => {
               <View>
                   <View >
                     <Text style={styles.account}>Business Description</Text>
-                    <Seperator/>
+                    {/* <Seperator/> */}
                   </View>
                   
                   <TextInput
-                      multiline
+                      multiline={true}
                       numberOfLines={3}
+                      textAlignVertical="top" 
+                      textAlign="left"
                       style={styles.input}
                       placeholder="Address / Location*"
                       onChangeText={(text) => setAddress(text)}
                       value={address}
                   />
                   <TextInput
-                      multiline
-                      numberOfLines={5}
+                      multiline={true}
+                      numberOfLines={8}
+                      maxLength={300}
+                      textAlignVertical="top" 
+                      textAlign="left"
                       style={styles.input}
                       placeholder="Business Description*"
                       onChangeText={(text) => setBusinessDescription(text)}
                       value={businessDescription}
-                      maxLength={100}
+                     
                   />
                   {/* <SelectInput label='Select Garment Type' options={options} /> */}
                   <Text style={styles.account}>Garment Type</Text>
                   <TextInput
                       style={styles.input}
-                      placeholder="ladies/gents/kids/all*"
+                      placeholder="ladies/ gents/ kids/ all*"
                       onChangeText={(text) => setType(text)}
                       value={type}
                   />
                   <Text style={styles.account}>Garment Style</Text>
                   <TextInput
+                      multiline={true}
+                      numberOfLines={3}
+                      textAlignVertical="top"
+                      textAlign="left"
                       style={styles.input}
-                      placeholder="festive,wedding,casual,suits"
+                      placeholder="festive, wedding, casual, suits .."
                       onChangeText={(text) => setStyle(text)}
                       value={style}
                   />
@@ -145,26 +160,26 @@ const Signup = ({ route }) => {
 
 const styles = StyleSheet.create({
   ImageBackground: {
+    position: 'absolute',
     width: '100%',
     height: '100%',
     zIndex: 1
   },
   Container: {
     flexGrow: 1,
-
     justifyContent: 'center',
     alignItems: 'left',
     position: "relative",
     padding: 10,
-    marginHorizontal: 10,
-    marginVertical: 20,
+    marginHorizontal: 8,
+    marginVertical: 15,
     borderRadius: 10,
     backgroundColor: "#ffff",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 8,
     shadowOpacity: 0.2,
-    zIndex: 2
+    zIndex: 2,
   },  
   title: {
     position: 'relative',
@@ -175,9 +190,9 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   account: {
-    letterSpacing: .5,
-    fontSize: 16,
-    margin: 8,
+    letterSpacing: .3,
+    fontSize: 14,
+    margin: 5,
     color: '#424242',
     padding: 5,
   },
@@ -186,12 +201,13 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    height: 50,
     borderColor: '#F1F0F0',
+    color: '#777',
     borderRadius: 20,
     borderWidth: 1,
     marginBottom: 15,
     padding: 10,
+
   },
   button: {
     padding: 15,
@@ -199,7 +215,7 @@ const styles = StyleSheet.create({
     paddingLeft: 55,
     borderRadius: 50,
     backgroundColor: '#9579E3',
-    margin: 50,
+    margin: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -6,15 +6,15 @@ import SearchCard from '../components/SearchCard';
 import CustomIcon from '../components/CustomIcon';
 
 
-const Home = ({ navigation }) => {
+function Home ({ navigation }) {
   // sample data
 
   const tailorData = [
     {
       id: '1',
       name: 'Tailor 1',
-      category: 'Gents',
-      details: 'Specializes in suits and formal wear.',
+      category: 'Ladies',
+      details: 'wedding and festives',
       image: '',
     },
     {
@@ -35,19 +35,29 @@ const Home = ({ navigation }) => {
       id: '4',
       name: 'Tailor 4',
       category: 'All',
-      details: 'Expert in designing dresses and gowns.',
+      details: 'Casual wear',
       image: '',
-    }
+    },
+    {
+      id: '5',
+      name: 'Tailor 5',
+      category: 'Gents',
+      details: 'Occassions and festives',
+      image: '',
+    },
   ];
   
   const [renderSearch, setRenderSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (category) => {
-    // Filter tailors based on the selected category
+    // Filter tailors based on the category and details 
+    
     const results = tailorData.filter((tailor) =>
-      tailor.category.toLowerCase().includes(category.toLowerCase())
+      tailor.category.toLowerCase().includes(category.toLowerCase()) ||
+      tailor.details.toLowerCase().includes(category.toLowerCase())
     );
+    
     setSearchResults(results);
     setRenderSearch(true);
   };

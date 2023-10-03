@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 
 function Notifications() {
+  
   return (
     <View style={styles.container} >
         <Text>Notifications screen</Text>

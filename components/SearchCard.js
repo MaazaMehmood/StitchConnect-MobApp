@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, Keyboard, StyleSheet } from 'react-native';
-import SearchBar from './SearchBar';
 import Cards from './Cards';
 
 
