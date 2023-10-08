@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground, StyleSheet, Dimensions } from 'react-native';
-import Seperator from '../components/Seperator';
+import { Divider } from 'react-native-paper';
 import CustomIcon from '../components/CustomIcon';
 
-
 const { width, height } = Dimensions.get("screen");
-
 const thumbMeasure = (width - 48 - 32) / 3;
 
 
+
 function Portfolio  () {
+
+  const[iconName, setIconName] = useState('heart-outline');
+
+  const handleIcon = () => {
+    setIconName(iconName === 'heart'? 'heart-outline' : 'heart')
+  };
   
   return (
     <View style={styles.profile}>
@@ -19,8 +24,13 @@ function Portfolio  () {
           source={require('../assets/images/bg.png')}
           style={styles.profileBackground}
         >
+          
           <ScrollView showsVerticalScrollIndicator={false} >
             <View style={styles.profileCard}>
+
+              <TouchableOpacity style={{ marginLeft: '90%'}}  onPress={handleIcon} >
+                <CustomIcon iconName={iconName} color="#9579E3" />
+              </TouchableOpacity>
               <View style={styles.avatarContainer}>
                 <Image source={require('../assets/images/formaluser.png')} style={styles.avatar} />
               </View>
@@ -59,7 +69,7 @@ function Portfolio  () {
                 <Text style={{ fontSize: 16, color: '#32325D', marginTop: 10 }}>Gulshan e Iqbal, Karachi</Text>
               </View>
               <View style={{ marginTop: 20, marginBottom: 10 }}>
-                <Seperator />
+                <Divider />
               </View>
               <View style={{ margin: 8, marginBottom: 30}}>
                 <Text style={{ fontSize: 15, color: '#525F7F', textAlign: "center", lineHeight: 20 }}>

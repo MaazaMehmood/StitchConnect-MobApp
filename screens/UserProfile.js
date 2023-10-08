@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
 
 
@@ -77,71 +78,97 @@ const UserProfile = ({ route }) => {
         style={styles.profileImage}
       />  
        
-      <Text style={styles.label}>Username</Text>
       <TextInput
         style={styles.input}
+        label='username'
         value={isEditing ? editedUsername : ''} // '' ki jaga name email .. ki value aegi 
         onChangeText={text => setEditedUsername(text)}
         editable={isEditing}
+        underlineColor='#9999'
+        activeUnderlineColor='#9579E3'
       />
-      <Text style={styles.label}>Email</Text>
+
       <TextInput
         style={styles.input}
+        label='Email'
         value={isEditing ? editedEmail : ''}
         onChangeText={text => setEditedEmail(text)}
         editable={isEditing}
+        underlineColor='#9999'
+        activeUnderlineColor='#9579E3'
       />
-      <Text style={styles.label}>Password</Text>
+    
       <TextInput
         style={styles.input}
+        label='Password'
         value={isEditing ? editedPassword : ''}
         onChangeText={text => setEditedPassword(text)}
         editable={isEditing}
+        underlineColor='#9999'
+        activeUnderlineColor='#9579E3'
       />
-      <Text style={styles.label}>Contact</Text>
+      
       <TextInput
         style={styles.input}
+        label='Contact'
         value={isEditing ? editedContact : ''}
         onChangeText={text => setEditedContact(text)}
         editable={isEditing}
+        underlineColor='#9999'
+        activeUnderlineColor='#9579E3'
       />
-      <Text style={styles.label}>Gender</Text>
+      
       <TextInput
         style={styles.input}
+        label='Gender'
         value={isEditing ? editedGender : ''}
         onChangeText={text => setEditedGender(text)}
         editable={isEditing}
+        underlineColor='#9999'
+        activeUnderlineColor='#9579E3'
       />
 
       {/* {accountType === 'Business Account' && (
         <>
-          <Text style={styles.label}>Address</Text>
+          
           <TextInput
             style={styles.input}
+            label='Address'
             value={isEditing ? editedAddress : ''}
             onChangeText={text => setEditedAddress(text)}
             editable={isEditing}
+            underlineColor='#9999'
+            activeUnderlineColor='#9579E3'
           />
-          <Text style={styles.label}>Business Description</Text>
+          
           <TextInput
             style={styles.input}
+            label='Business Description'
             value={isEditing ? editedDescription : ''}
             onChangeText={text => setEditedDescription(text)}
             editable={isEditing}
+            underlineColor='#9999'
+            activeUnderlineColor='#9579E3'
           />
-          <Text style={styles.label}>Garments Type</Text>
+        
           <TextInput
             style={styles.input}
+            label='Garment Type'
             value={isEditing ? editedGarmentsType : ''}
             onChangeText={text => setEditedGarmentsType(text)}
             editable={isEditing}
+            underlineColor='#9999'
+            activeUnderlineColor='#9579E3'
           />
-          <Text style={styles.label}>Garments Style</Text>
+          
           <TextInput
             style={styles.input}
+            label='Garment Style'
             value={isEditing ? editedGarmentsStyle : ''}
             onChangeText={text => setEditedGarmentsStyle(text)}
             editable={isEditing}
+            underlineColor='#9999'
+            activeUnderlineColor='#9579E3'
           />
         </>
       )} */}
@@ -177,31 +204,25 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'left',
     justifyContent: 'left',
-    padding: 15,
+    padding: 8,
     backgroundColor: '#ffff'
   },
   profileImage: {
-    width: 110,
-    height: 110,
+    width: 130,
+    height: 130,
     borderRadius: 75,
-    marginBottom: 50,
-  },
-  label: {
-    color: '#424242',
-    fontSize: 15,
-    // fontStyle: 'italic',
-    marginBottom: 5,
-    marginTop: 10,
+    marginBottom: 30,
   },
   input: {
-    color: 'black',
-    fontSize: 16,
-    letterSpacing: .3,
-    borderBottomWidth: 1,
-    borderColor: '#F1F0F0',
-    borderRadius: 5,
-    padding: 5,
-    marginBottom: 18,
+    alignItems: 'left',
+    width: '100%',
+    marginBottom: 3,
+    padding: 3,
+    color: '#777',
+    backgroundColor: 'transparent',
+    fontSize:  16,
+    overflowX: 'scroll',
+    letterSpacing: .3
   },
   button: {
     marginTop: 50,

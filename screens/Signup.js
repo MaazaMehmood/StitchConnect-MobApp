@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
-// import Seperator from '../components/Seperator';
-// import SelectInput from '../components/SelectInput';
-
-// const { width, height } = Dimensions.get("screen");
+import { View, Text, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { TextInput, RadioButton, Checkbox } from 'react-native-paper';
 
 
 function Signup ({ route }) {
@@ -44,101 +41,100 @@ function Signup ({ route }) {
           <Text style={styles.title}>Sign Up</Text>
           
           <View style={styles.view} >
-            <View >
-              <Text style={styles.account}>Personal</Text>
-              {/* <Seperator/> */}
-            </View>
-
             <TextInput
-                
                 style={styles.input}
-                placeholder="First Name*"
+                label="First Name"
                 onChangeText={(text) => setFirstName(text)}
                 value={firstName}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
             />
             <TextInput
-                
                 style={styles.input}
-                placeholder="Last Name*"
+                label="Last Name*"
                 onChangeText={(text) => setLastName(text)}
                 value={lastName}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
             />
             <TextInput
-                multiline={true}
-                numberOfLines={2}
                 style={styles.input}
-                placeholder="Email"
+                label="Email"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
             />
             <TextInput
                 style={styles.input}
-                placeholder="Password*"
+                label="Password*"
                 onChangeText={(text) => setPassword(text)}
                 value={password}
                 secureTextEntry
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
             />
             <TextInput
                 style={styles.input}
-                placeholder="Contact*"
+                label="Contact*"
                 onChangeText={(text) => setContact(text)}
                 value={contact}
                 keyboardType='numeric'
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
             />
-            <TextInput
-                style={styles.input}
-                placeholder="Gender"
-                onChangeText={(text) => setGender(text)}
-                value={gender}
-            />
+            <RadioButton.Group onValueChange={newValue => setGender(newValue)} value={gender}  >
+              <Text style={{ margin: 3}} ></Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
+                <RadioButton value="Male" />
+                <Text style={{color: '#444'}}>Male</Text>
+              </View>
+              <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center', marginBottom: 8}} >
+                <RadioButton value="Female" />
+                <Text style={{color: '#444'}}>Female</Text>
+              </View>
+            </RadioButton.Group>
 
             {accountType === 'Business Account' && (
               <View>
-                  <View >
-                    <Text style={styles.account}>Business Description</Text>
-                    {/* <Seperator/> */}
-                  </View>
-                  
+
+                  <Text style={{ fontSize: 17, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
                   <TextInput
-                      multiline={true}
-                      numberOfLines={3}
-                      textAlignVertical="top" 
-                      textAlign="left"
                       style={styles.input}
-                      placeholder="Address / Location*"
+                      label="Address / Location*"
                       onChangeText={(text) => setAddress(text)}
                       value={address}
+                      underlineColor='#9999'
+                      activeUnderlineColor='#9579E3'
                   />
                   <TextInput
                       multiline={true}
-                      numberOfLines={8}
+                      numberOfLines={6}
                       maxLength={300}
                       textAlignVertical="top" 
                       textAlign="left"
                       style={styles.input}
-                      placeholder="Business Description*"
+                      label="Business Description*"
                       onChangeText={(text) => setBusinessDescription(text)}
                       value={businessDescription}
-                     
+                      underlineColor='#9999'
+                      activeUnderlineColor='#9579E3'
                   />
-                  {/* <SelectInput label='Select Garment Type' options={options} /> */}
-                  <Text style={styles.account}>Garment Type</Text>
                   <TextInput
                       style={styles.input}
-                      placeholder="ladies/ gents/ kids/ all*"
+                      label="Garment Type*"
                       onChangeText={(text) => setType(text)}
                       value={type}
+                      underlineColor='#9999'
+                      activeUnderlineColor='#9579E3'
                   />
-                  <Text style={styles.account}>Garment Style</Text>
                   <TextInput
-                      multiline={true}
-                      numberOfLines={3}
-                      textAlignVertical="top"
-                      textAlign="left"
                       style={styles.input}
-                      placeholder="festive, wedding, casual, suits .."
+                      label="Garment Style*"
                       onChangeText={(text) => setStyle(text)}
                       value={style}
+                      underlineColor='#9999'
+                      activeUnderlineColor='#9579E3'
                   />
               </View>
             )}
@@ -170,7 +166,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'left',
     position: "relative",
-    padding: 10,
+    padding: 8,
     marginHorizontal: 8,
     marginVertical: 15,
     borderRadius: 10,
@@ -186,28 +182,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: .5,
     fontSize: 25,
-    margin: 15,
-    marginBottom: 30
-  },
-  account: {
-    letterSpacing: .3,
-    fontSize: 14,
-    margin: 5,
-    color: '#424242',
-    padding: 5,
+    margin: 10,
+    marginBottom: 50
   },
   view: {
     marginBottom: 30,
   },
   input: {
+    alignItems: 'left',
     width: '100%',
-    borderColor: '#F1F0F0',
+    marginBottom: 3,
+    padding: 3,
     color: '#777',
-    borderRadius: 20,
-    borderWidth: 1,
-    marginBottom: 15,
-    padding: 10,
-
+    backgroundColor: 'transparent',
+    fontSize:  15,
+    overflowX: 'scroll'
   },
   button: {
     padding: 15,

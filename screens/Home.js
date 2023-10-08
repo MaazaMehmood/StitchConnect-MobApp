@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import HomeCard from '../components/HomeCard';
-import SearchCard from '../components/SearchCard';
+import HomeCard from '../components/Cards/HomeCard';
+import SearchCard from '../components/Cards/SearchCard';
 import CustomIcon from '../components/CustomIcon';
 
 
@@ -75,8 +75,8 @@ function Home ({ navigation }) {
       
       { renderSearch ? (
         <>
-          <TouchableOpacity onPress={handleBack} style={{ backgroundColor: '#ffff', paddingLeft: 10}}>
-              <CustomIcon iconName="arrow-back-outline" color="grey" />
+          <TouchableOpacity onPress={handleBack} style={{ backgroundColor: '#FAF9F9', paddingLeft: 10}}>
+              <CustomIcon iconName="chevron-back-outline" color="grey" />
           </TouchableOpacity>
           <SearchCard searchData={searchResults} />
         </>

@@ -4,19 +4,18 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const RadioButton = ({ options, selectedOption, onSelect }) => {
   return (
-    <View style={styles.radioContainer}>
-      {options.map((option, index) => (
-        <>
-          <TouchableOpacity
-            keyExtractor={(index)}
-            style={[styles.radioOption, { backgroundColor: selectedOption === option ? '#9579E3' : 'white' }, { borderColor: selectedOption === option ? 'white' : '#A98ADC' }]}
-            onPress={() => onSelect(option)}
-          >
-            <Text style={[styles.radioText, {  color: selectedOption === option ? 'white' : '#9579E3' }]}>{option}</Text>
-          </TouchableOpacity>
-            
-        </>
-      ))}
+    < View style={styles.radioContainer} >
+    {options.map((option, index) => (
+      <TouchableOpacity
+        key={index} // Use index as the key
+        item={option}
+        style={[styles.radioOption, { backgroundColor: selectedOption === option ? '#9579E3' : 'white' }, { borderColor: selectedOption === option ? 'white' : '#A98ADC' }]}
+        onPress={() => onSelect(option)}
+      >
+        <Text style={[styles.radioText, {  color: selectedOption === option ? 'white' : '#9579E3' }]}>{option}</Text>
+      </TouchableOpacity>
+    ))}
+    
     </View>
   );
 };

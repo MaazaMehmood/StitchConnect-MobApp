@@ -1,27 +1,25 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Switch, StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, TouchableOpacity, Switch, ScrollView, StyleSheet } from 'react-native';
 import CustomIcon from '../components/CustomIcon';
 
 
-
-function Settings () {
+function Settings ({ navigation }) {
 
   const handleNotificationToggle = (value) => {
     //notification toggle logic here
   };
 
-  const handleDarkModeToggle = (value) => {
-    // dark mode toggle logic here
+  const handleProfileEditing = () => {
+    navigation.navigate('Profile')
   };
 
   return (
     <View style={styles.container}>
       <ScrollView>
 
-        <Text style={styles.heading}>Settings</Text>
-        
-        <View style={styles.option}>
+        <Text style={styles.heading}>Notifications Settings</Text>
+
+        <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>Receive Notifications</Text>
           <Switch
             value={true} // Set the initial value based on user preference
@@ -32,49 +30,36 @@ function Settings () {
             }}
             thumbColor={'#9579E3'}
           />
-        </View>
-        <View style={styles.option}>
-          <Text style={styles.optionText}>Dark Mode</Text>
-          <Switch
-            value={false} // Set the initial value based on user preference
-            onValueChange={handleDarkModeToggle}
-            trackColor={{
-              false: '#767577', // Color when switch is off
-              true: '#81b0ff',  // Color when switch is on
-            }}
-            // thumbColor={isEnabled ? '#9579E3' : '#f4f3f4'}
-          />
-        </View>
+        </TouchableOpacity>
 
         <Text style={styles.heading}>Payment Settings</Text>
 
-        <View style={styles.option}>
+        <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>Manage Payments Options</Text>
-          <Switch
-            value={true} // Set the initial value based on user preference
-            onValueChange={handleNotificationToggle}
-            trackColor={{
-              false: '#767577', // Color when switch is off
-              true: '#C5B8E7',  // Color when switch is on
-            }}
-            thumbColor={'#9579E3'}
-          />
-        </View>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
+
+        <Text style={styles.heading}>Profile Settings</Text>
+
+        <TouchableOpacity style={styles.option}   onPress={ handleProfileEditing }>
+          <Text style={styles.optionText}>Edit Profile</Text>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
 
         <Text style={styles.heading}>Privacy Settings</Text>
 
-        <View style={styles.option}>
+        <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>User Agreement</Text>
-          <CustomIcon  iconName='arrow-forward-outline' color='#444' />
-        </View>
-        <View style={styles.option}>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>Privacy</Text>
-          <CustomIcon  iconName='arrow-forward-outline' color='#444' />
-        </View>
-        <View style={styles.option}>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>About </Text>
-          <CustomIcon  iconName='arrow-forward-outline' color='#444' />
-        </View>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
         
       </ScrollView>
     </View>
@@ -87,30 +72,20 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   heading: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#444',
-    marginBottom: 20,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#333',
+    marginVertical: 15,
   },
   option: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 15,
+    marginVertical: 10,
   },
   optionText: {
-    fontSize: 16,
-  },
-  logoutButton: {
-    backgroundColor: 'red',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  logoutButtonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+    fontSize: 15,
+    color: '#555',
   },
 });
 

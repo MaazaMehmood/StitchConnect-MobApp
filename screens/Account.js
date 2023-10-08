@@ -36,10 +36,8 @@ function Account ({ navigation }) {
           />
       </View>
 
-      <TouchableOpacity
-          onPress={handleLogin}
-      >
-          <Text style={styles.login}>Already have an account? login</Text>
+      <TouchableOpacity onPress={handleLogin}> 
+        <Text style={styles.login}>Already have an account? login</Text>  
       </TouchableOpacity>
     </View>      
   );

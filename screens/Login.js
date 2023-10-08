@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Image,TouchableOpacity, TextInput, Keyboard,TouchableWithoutFeedback , StyleSheet } from 'react-native';
-
+import { View, Text, Image,TouchableOpacity, Keyboard,TouchableWithoutFeedback , StyleSheet } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 
 function Login ({ navigation }) {
@@ -37,22 +37,28 @@ function Login ({ navigation }) {
 
           <TextInput
               style={styles.input}
-              placeholder="Username / Email"
+              label="Username / Email"
               onChangeText={(text) => setNameEmail(text)}
               value={nameEmail}
+              underlineColor='#9999'
+              activeUnderlineColor='#9579E3'
           />
           <TextInput
               style={styles.input}
-              placeholder="Password"
+              label="Password"
               onChangeText={(text) => setPassword(text)}
               value={password}
+              underlineColor='#9999'
+              activeUnderlineColor='#9579E3'
               secureTextEntry
           />
           <TextInput
               style={styles.input}
-              placeholder="Account type"
+              label="Account type"
               onChangeText={(text) => setAccountType(text)}
               value={accountType}
+              underlineColor='#9999'
+              activeUnderlineColor='#9579E3'
           />
 
           <TouchableOpacity
@@ -62,9 +68,7 @@ function Login ({ navigation }) {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-              onPress={handleSignup}
-          >
+          <TouchableOpacity onPress={handleSignup} >  
               <Text style={styles.signup}>Don't have an account? Sign up</Text>
           </TouchableOpacity>
       </View>
@@ -94,13 +98,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   input: {
+    alignItems: 'left',
     width: '100%',
-    height: 50,
-    borderColor: '#F1F0F0',
-    borderRadius: 20,
-    borderWidth: 1,
-    marginBottom: 15,
-    padding: 10,
+    marginBottom: 3,
+    padding: 3,
+    color: '#777',
+    backgroundColor: 'transparent',
+    fontSize:  15,
+    overflowX: 'scroll'
   },
   button: {
     padding: 15,

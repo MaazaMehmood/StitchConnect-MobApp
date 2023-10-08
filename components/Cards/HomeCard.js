@@ -6,7 +6,6 @@ import Cards from './Cards';
 const HomeCard = ({ data }) => {
 
   return (
-    <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
       <View style={styles.container} >
 
         <ScrollView 
@@ -21,7 +20,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) => < Cards tailor={item} /> } 
+                renderItem={ ({ item }) => < Cards tailor={item} width={250} /> } 
               />
             </View>
           </View>
@@ -34,7 +33,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards tailor={item} /> } 
+                renderItem={ ({ item }) =>  <Cards tailor={item} width={230} /> } 
               />
             </View>
           </View>
@@ -47,7 +46,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards tailor={item} /> } 
+                renderItem={ ({ item }) =>  <Cards tailor={item} width={230}/> } 
               />
             </View>
           </View>
@@ -55,7 +54,6 @@ const HomeCard = ({ data }) => {
         </ScrollView>
         
       </View>
-    </TouchableWithoutFeedback>
     
   );
 };
@@ -72,22 +70,21 @@ const styles = StyleSheet.create({
     flexDirection: 'col',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FAF9F9',
+    // backgroundColor: '#FAF9F9',
   },
   card: {
-    // position: 'relative',
-    // backgroundColor: '#FAF9F9',
-    margin: 5,
-    padding: 8,
+    margin: 10
   },
   category: {
     color: '#444',
     fontWeight: 'bold',
     fontSize: 16,
     margin: 5,
+    marginBottom: 15
   },
   horizontalScrollContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     overflow: 'scroll', // Enable horizontal scrolling
   }
 
