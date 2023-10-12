@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
+import { connect } from 'react-redux';
 import CustomIcon from '../../components/CustomIcon';
 import OrderSummary from './views/OrderSummary';
 import Progress from './views/Progress';
+import OrderDetails from './views/OrderDetails';
+
 
 const { width, height } = Dimensions.get("screen");
 
-
-function Dashboard ({ navigation }) {
+function Dashboard ({ navigation, user }) {
 
   const [activeSection, setActiveSection] = useState('summary');
 
@@ -37,7 +39,7 @@ function Dashboard ({ navigation }) {
         </View>
         
         <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginTop: 5}}>
-          <Text style={styles.userName}>Maaza Mehmood</Text>
+          <Text style={styles.userName}>{user.name}</Text>
         </View>
       </ImageBackground>
 
@@ -87,7 +89,7 @@ function Dashboard ({ navigation }) {
       )}
       {activeSection === 'details' && (
         <View style={styles.content}>
-          <Text>Details Content Goes Here</Text>
+          <OrderDetails/>
         </View>
       )}
     </View>
@@ -123,12 +125,12 @@ const styles = StyleSheet.create({
     color: '#ffffff'
   },
   toggleButtons: {
-    borderRadius: 15,
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#FDFBFB',
-    paddingVertical: 5,
+    backgroundColor: '#ffffff',
+    paddingVertical: 2,
     marginHorizontal: 20,
     top: '-5%'
   },
@@ -157,4 +159,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(Dashboard);

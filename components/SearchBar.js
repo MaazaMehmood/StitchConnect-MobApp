@@ -3,7 +3,12 @@ import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ navigation,  onSearch }) => {
+
+  const handleOnFocus = () => {
+    navigation.navigate('Search');
+  }
+   
   const [category, setCategory] = useState('');
   
   const handleSearch = () => {
@@ -13,12 +18,14 @@ const SearchBar = ({ onSearch }) => {
   return (
     <View style={styles.container} >
         <TextInput
+            onFocus={handleOnFocus}
             style={styles.input}
             placeholder="Search by category"
             onChangeText={(text) => {
               onSearch(text)
               setCategory(text)
             }}
+            clearTextOnFocus={true}
             value={category}
         />
         <TouchableOpacity onPress={handleSearch} style={styles.button} >

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import HomeCard from '../components/Cards/HomeCard';
+import SearchCard from '../components/Cards/SearchCard';
 
 
-function Home ({ navigation }) {
-
+function Search ({ navigation }) {
   // sample data
+
   const tailorData = [
     {
       id: '1',
@@ -44,23 +44,31 @@ function Home ({ navigation }) {
       image: '',
     },
   ];
+  
+  const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = () => {
-    navigation.navigate('Search');
-  }
-
+  const handleSearch = (category) => {
+    // Filter tailors based on the category and details 
+    
+    const results = tailorData.filter((tailor) =>
+      tailor.category.toLowerCase().includes(category.toLowerCase()) ||
+      tailor.details.toLowerCase().includes(category.toLowerCase())
+    );
+    
+    setSearchResults(results);
+  };
+  
  
 
   return (
     <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
-      <>
+    <>
         <SearchBar navigation={navigation} onSearch={handleSearch} />
-        <HomeCard navigation={navigation} data={tailorData} />   
-      </>
+        <SearchCard navigation={navigation} searchData={searchResults} /> 
+    </>
     </TouchableWithoutFeedback>
-    
   );
 };
 
 
-export default Home;
+export default Search;

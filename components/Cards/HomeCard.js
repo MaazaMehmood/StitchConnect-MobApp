@@ -3,7 +3,8 @@ import { View, Text, ScrollView, TouchableWithoutFeedback, FlatList, Keyboard, S
 import Cards from './Cards';
 
 
-const HomeCard = ({ data }) => {
+
+const HomeCard = ({ navigation, data }) => {
 
   return (
       <View style={styles.container} >
@@ -20,7 +21,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) => < Cards tailor={item} width={250} /> } 
+                renderItem={ ({ item }) => < Cards navigation={navigation} tailor={item} width={250} /> } 
               />
             </View>
           </View>
@@ -33,7 +34,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards tailor={item} width={230} /> } 
+                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={230} /> } 
               />
             </View>
           </View>
@@ -46,7 +47,7 @@ const HomeCard = ({ data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards tailor={item} width={230}/> } 
+                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={230}/> } 
               />
             </View>
           </View>

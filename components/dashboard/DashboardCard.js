@@ -3,13 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 
+
 const DashboardCard = ({ title, number, icon, color }) => {
   return (
     <View style={styles.card}>
       <View style={styles.iconContainer}>
         <FontAwesome name={icon} size={25} color={color} />
       </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '80%', marginLeft: 3 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItem: 'center', width: '80%', marginLeft: 5 }}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.number}>{number}</Text>
       </View>
@@ -22,13 +23,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'right',
+    justifyContent: 'center',
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
-    elevation: 3,
+    elevation: 4,
     padding: 8,
     margin: 3,
     width: '100%',

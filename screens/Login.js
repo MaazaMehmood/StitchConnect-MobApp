@@ -1,26 +1,37 @@
 import React, { useState } from 'react';
 import { View, Text, Image,TouchableOpacity, Keyboard,TouchableWithoutFeedback , StyleSheet } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, RadioButton } from 'react-native-paper';
+import { connect } from 'react-redux';
+import { login } from '../store/userActions';
 
 
-function Login ({ navigation }) {
+function Login ({ navigation, login }) {
   
   const [nameEmail, setNameEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('');
   
+
   const handleSignup = () => {
     navigation.navigate('Account');
   };
 
+
   const handleLogin = () => {
-    // Add login logic, API calls, authentication, etc.
+    // login logic, API calls, authentication, etc.
 
     console.log('Email:', nameEmail);
-    console.log('Password:', password);
     console.log('Account type:', accountType);
 
-    navigation.navigate('Home');
+    const user = { name: nameEmail, userType: accountType };
+    console.log(user); 
+    
+
+    if (accountType)  {
+      login(user);
+      navigation.navigate('Home');
+    }
+
   };
 
   return (
@@ -40,6 +51,7 @@ function Login ({ navigation }) {
               label="Username / Email"
               onChangeText={(text) => setNameEmail(text)}
               value={nameEmail}
+              clearTextOnFocus={true}
               underlineColor='#9999'
               activeUnderlineColor='#9579E3'
           />
@@ -48,18 +60,23 @@ function Login ({ navigation }) {
               label="Password"
               onChangeText={(text) => setPassword(text)}
               value={password}
+              clearTextOnFocus={true}
               underlineColor='#9999'
               activeUnderlineColor='#9579E3'
               secureTextEntry
           />
-          <TextInput
-              style={styles.input}
-              label="Account type"
-              onChangeText={(text) => setAccountType(text)}
-              value={accountType}
-              underlineColor='#9999'
-              activeUnderlineColor='#9579E3'
-          />
+          <RadioButton.Group onValueChange={newValue => setAccountType(newValue)} value={accountType}  >
+              <View  style={{flexDirection: 'row', alignItems: 'center', marginVertical: 10, marginRight: 150}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
+                  <RadioButton value="business" />
+                  <Text style={{color: '#444'}}>Business</Text>
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
+                  <RadioButton value="customer" />
+                  <Text style={{color: '#444'}}>Customer</Text>
+                </View>
+              </View>
+            </RadioButton.Group>
 
           <TouchableOpacity
             style={styles.button}
@@ -131,4 +148,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+const mapDispatchToProps = {
+  login,
+}
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -3,9 +3,14 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 
-const Cards = ({ tailor, width }) => {
+const Cards = ({ navigation, tailor, width }) => {
+
+  const handlePortfolio = () => {
+    navigation.navigate('Portfolio');
+  }
 
   return (
+    <TouchableOpacity onPress={handlePortfolio}>
     <View style={[styles.card, {width: width}]}>
       <Image source={require('../../assets/images/image.jpg')} style={styles.image} />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5}} >
@@ -16,6 +21,7 @@ const Cards = ({ tailor, width }) => {
         </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 

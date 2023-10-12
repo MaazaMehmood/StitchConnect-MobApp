@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 
 
-const UserProfile = ({ route }) => {
+const UserProfile = ({ user }) => {
 
   // const [userData, setUserData] = useState(null); // State to store user data
 
@@ -128,7 +129,7 @@ const UserProfile = ({ route }) => {
         activeUnderlineColor='#9579E3'
       />
 
-      {/* {accountType === 'Business Account' && (
+      { user.userType === "business" && (
         <>
           
           <TextInput
@@ -171,7 +172,7 @@ const UserProfile = ({ route }) => {
             activeUnderlineColor='#9579E3'
           />
         </>
-      )} */}
+      )}
 
       {/* buttons */}
       {isEditing ? (
@@ -198,6 +199,7 @@ const UserProfile = ({ route }) => {
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   scrollViewContainer: {
@@ -242,4 +244,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default UserProfile;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(UserProfile);

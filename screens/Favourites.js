@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import FavouriteCards from '../components/Cards/FavouriteCards';
 
+
 function Favourites() {
 
   const [favorites, setFavorites] = useState([

@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import { Divider } from 'react-native-paper';
 import CustomIcon from '../components/CustomIcon';
+import { connect } from 'react-redux';
+
 
 const { width, height } = Dimensions.get("screen");
 const thumbMeasure = (width - 48 - 32) / 3;
 
 
-
-function Portfolio  () {
-
-  const[iconName, setIconName] = useState('heart-outline');
-
-  const handleIcon = () => {
-    setIconName(iconName === 'heart'? 'heart-outline' : 'heart')
-  };
+function Portfolio  ({ navigation, user }) {
   
   return (
     <View style={styles.profile}>
@@ -27,14 +22,11 @@ function Portfolio  () {
           
           <ScrollView showsVerticalScrollIndicator={false} >
             <View style={styles.profileCard}>
-
-              <TouchableOpacity style={{ marginLeft: '90%'}}  onPress={handleIcon} >
-                <CustomIcon iconName={iconName} color="#9579E3" />
-              </TouchableOpacity>
               <View style={styles.avatarContainer}>
                 <Image source={require('../assets/images/formaluser.png')} style={styles.avatar} />
               </View>
               <View style={styles.info}>
+              { user.userType === 'customer' && (
                 <View style={{ marginTop: 20, paddingBottom: 24, flexDirection: 'row', justifyContent: 'center' }}>
                   <TouchableOpacity
                     style={[styles.button, { borderWidth: 1, borderColor: '#571DD2', backgroundColor: 'transparent' }]}
@@ -49,7 +41,8 @@ function Portfolio  () {
                     <Text style={styles.buttonText}>Order Here</Text>
                   </TouchableOpacity>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              )}
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20 }}>
                   <View style={{ alignItems: 'center' }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Rating</Text>
@@ -79,11 +72,13 @@ function Portfolio  () {
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#525F7F' }}>Gallery</Text>
-                <TouchableOpacity 
-                // onPress={}
-                >
-                  <Text style={{ color: "#5E72E4", fontSize: 14, marginLeft: 20 }}>Upload Photos</Text>
-                </TouchableOpacity>
+                { user.userType === "business" && (
+                  <TouchableOpacity 
+                  // onPress={}
+                  >
+                    <Text style={{ color: "#5E72E4", fontSize: 14, marginLeft: 20 }}>Upload Photos</Text>
+                  </TouchableOpacity>
+                )}
               </View>
               <View style={{ paddingBottom: 20, margin: 10 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -215,4 +210,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Portfolio;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(Portfolio);

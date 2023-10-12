@@ -4,6 +4,8 @@ import {  TouchableOpacity } from 'react-native';
 import CustomIcon from './CustomIcon';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { logout } from '../store/userActions';
 
 import Login from '../screens/Login';
 import Home from '../screens/Home';
@@ -14,14 +16,16 @@ import Favourites from '../screens/Favourites';
 import Dashboard from '../screens/Dashboard/Dashboard';
 
 
+
 const Drawer = createDrawerNavigator();
 
-
-const DrawerNavigator = ({ navigation }) => {
+const DrawerNavigator = ({ navigation, user, logout}) => {
 
   const handleNotifications = () => {
     navigation.navigate('Notifications')
   }
+
+
     return (
       <Drawer.Navigator 
         initialRouteName="Home"
@@ -39,7 +43,7 @@ const DrawerNavigator = ({ navigation }) => {
         }}
       >
         <Drawer.Screen name="Home" component={Home} 
-          options={({ navigation }) => ({
+          options={( ) => ({
             headerTitle: 'Stitch Connect',
             headerRight: () => (
               <TouchableOpacity style={{ marginRight: 15 }} onPress={handleNotifications}>
@@ -57,21 +61,25 @@ const DrawerNavigator = ({ navigation }) => {
             return <CustomIcon iconName="person-outline"  color={activeColor} />
           }}}
         />
-        <Drawer.Screen name="Dashboard" component={Dashboard} 
-          options={{ drawerIcon: ({ focused }) => {
-            const activeColor = focused ? 'white' : '#2ecc71';
-            return <MaterialCommunityIcons name="view-dashboard-outline" size={22} color={activeColor} />
-          },
-          headerShown: false
-        }} 
-        />
-        <Drawer.Screen name="Portfolio" component={Portfolio} 
-          options={({ navigation }) => ({
-          drawerIcon: ({ focused }) => {
-            const activeColor = focused ? 'white' : '#22CCDD';
-            return <AntDesign name="profile" size={23} color={activeColor} />}
-          })}
-        />
+        { user.userType === "business" && (
+          <>
+            <Drawer.Screen name="Dashboard" component={Dashboard} 
+              options={{ drawerIcon: ({ focused }) => {
+                const activeColor = focused ? 'white' : '#2ecc71';
+                return <MaterialCommunityIcons name="view-dashboard-outline" size={22} color={activeColor} />
+              },
+              headerShown: false
+            }} 
+            />
+            <Drawer.Screen name="Portfolio" component={Portfolio} 
+              options={() => ({
+              drawerIcon: ({ focused }) => {
+                const activeColor = focused ? 'white' : '#22CCDD';
+                return <AntDesign name="profile" size={23} color={activeColor} />}
+              })}
+            />
+          </>
+        )}
         <Drawer.Screen name="Favourites" component={Favourites} 
           options={{
             drawerIcon: ({ focused }) => {
@@ -85,7 +93,7 @@ const DrawerNavigator = ({ navigation }) => {
             return <CustomIcon iconName="settings-outline" color={activeColor} />
           }}} 
         />
-        <Drawer.Screen name="Logout" component={Login} 
+        <Drawer.Screen name="Logout" component={Login} onPress={logout}
           options={{ drawerIcon: ({ focused }) => {
             const activeColor = focused ? 'white' : '#e74c3c';
             return <AntDesign name="logout" size={23} color={activeColor} />
@@ -96,4 +104,9 @@ const DrawerNavigator = ({ navigation }) => {
     );
 };
 
-export default DrawerNavigator;
+
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps, { logout })(DrawerNavigator);

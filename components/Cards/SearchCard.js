@@ -4,7 +4,7 @@ import Cards from './Cards';
 
 
 
-const SearchCard = ({ searchData }) => {
+const SearchCard = ({ navigation, searchData }) => {
   
   return (
     <View style={styles.container} >
@@ -13,7 +13,7 @@ const SearchCard = ({ searchData }) => {
         <FlatList
           data={searchData}
           keyExtractor={(item) => item.id}
-          renderItem={ ({ item }) =>  <Cards tailor={item} width={330} /> } 
+          renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={330} /> } 
           showsVerticalScrollIndicator={false}
         />
       </View>
