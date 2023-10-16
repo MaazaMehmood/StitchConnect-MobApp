@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     alignItem: 'center'
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '400',
     color: '#444',
   },
   number: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
     color: '#333',
   },

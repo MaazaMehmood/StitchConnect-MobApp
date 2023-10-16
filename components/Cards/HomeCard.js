@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#FCFAFA',
   },
   cardContainer: {
     position: 'relative',
@@ -71,14 +72,13 @@ const styles = StyleSheet.create({
     flexDirection: 'col',
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: '#FAF9F9',
   },
   card: {
     margin: 10
   },
   category: {
     color: '#444',
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 16,
     margin: 5,
     marginBottom: 15

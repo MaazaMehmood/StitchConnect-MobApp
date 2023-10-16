@@ -15,11 +15,6 @@ function Onboarding ({ navigation }) {
         style={styles.backgroundImage}
         resizeMode="cover"
       />
-      {/* <Image
-        source={require('../assets/images/SC.png')}
-        style={styles.logoImage}
-        resizeMode="contain"
-      /> */}
       
       <Text style={styles.titleText}>Lets Get Started</Text>
       
@@ -47,13 +42,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  // logoImage: {
-  //   position: 'relative',
-  //   borderRadius: 100,
-  //   width: 230,
-  //   height: 230,
-  //   marginVertical: '35%',
-  // },
   titleText: {
     textAlign: 'center',
     fontSize: 40,

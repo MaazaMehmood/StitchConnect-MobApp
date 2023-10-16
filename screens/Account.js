@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   title: {
     letterSpacing: .5,
-    fontSize: 26,
+    fontSize: 24,
     marginBottom: 10,
   },
   login: {

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Switch, ScrollView, StyleSheet } from 're
 import CustomIcon from '../components/CustomIcon';
 
 
+
 function Settings ({ navigation }) {
 
   const handleNotificationToggle = (value) => {
@@ -60,6 +61,12 @@ function Settings ({ navigation }) {
           <Text style={styles.optionText}>About </Text>
           <CustomIcon  iconName='chevron-forward-outline' color='#999' />
         </TouchableOpacity>
+
+        <Text style={styles.heading}>Account</Text>
+
+        <TouchableOpacity style={styles.option}>
+          <Text style={styles.optionText}>Delete Account</Text>
+        </TouchableOpacity>
         
       </ScrollView>
     </View>
@@ -69,10 +76,11 @@ function Settings ({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 16,
+    padding: 15,
+    backgroundColor: '#FCFAFA',
   },
   heading: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '500',
     color: '#333',
     marginVertical: 15,
@@ -84,8 +92,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   optionText: {
-    fontSize: 15,
-    color: '#555',
+    fontSize: 14,
+    color: '#444',
   },
 });
 

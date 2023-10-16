@@ -25,7 +25,7 @@ function Progress () {
             <FontAwesome name='dollar' size={23} color="#555" />
           </View>
           <View style={{ flexDirection: 'col', justifyContent: 'center', alignItem: 'center', marginLeft: 8 , width: '80%'}}>
-            <Text style={{ fontSize: 13, color: '#888'}}>earning</Text>
+            <Text style={{ fontSize: 14, color: '#888'}}>earning</Text>
             <Text style={styles.data}>PKR 23687</Text>
           </View>
         </View>
@@ -34,7 +34,7 @@ function Progress () {
             <FontAwesome name='dollar' size={23} color="#555" />
           </View>
           <View style={{ flexDirection: 'col', justifyContent: 'center', alignItem: 'center', marginLeft: 8 , width: '80%'}}>
-            <Text style={{ fontSize: 13, color: '#888'}}>revenue</Text>
+            <Text style={{ fontSize: 14, color: '#888'}}>revenue</Text>
             <Text style={styles.data}>PKR 4200</Text>
           </View>
         </View>
@@ -76,7 +76,7 @@ function Progress () {
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '500',
     color: '#222',
     marginVertical: 5
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   data: {
     fontSize: 16, 
     color: '#9579E3', 
-    fontWeight: 'bold', 
+    fontWeight: '500', 
     flexDirection: 'row',
     flexWrap: 'wrap'
   },

@@ -105,16 +105,15 @@ const OrderDetails = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 10,
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '500',
     color: '#222',
+    marginHorizontal: 10
   },
   card: {
     alignItem: 'center',
-    borderRadius: 8,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -122,13 +121,13 @@ const styles = StyleSheet.create({
     elevation: 3,
     padding: 20,
     margin: 3,
-    backgroundColor: '#F9F8F8',
-    width: '98%',
+    backgroundColor: '#FCFAFA',
+    width: '100%',
     height: 200
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
     marginVertical: 5,
   },
   customerInfo: {

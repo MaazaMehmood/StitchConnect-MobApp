@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   title: {
     letterSpacing: .5,
-    fontSize: 26,
+    fontSize: 24,
     marginBottom: 30,
   },
   input: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     padding: 3,
     color: '#777',
     backgroundColor: 'transparent',
-    fontSize:  15,
+    fontSize:  14,
     overflowX: 'scroll'
   },
   button: {
@@ -135,9 +135,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 18,
   },
   signup: {
     color: '#9579E3',

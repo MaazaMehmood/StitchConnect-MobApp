@@ -36,15 +36,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'right',
     backgroundColor: '#fff',
-    borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 3,
-    margin: 5,
+    margin: 3,
     padding: 5,
-    width: 340,
+    width: 350,
     height: 100
   },
   image: {

@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     padding: 3,
     color: '#777',
     backgroundColor: 'transparent',
-    fontSize:  16,
+    fontSize:  14,
     overflowX: 'scroll',
     letterSpacing: .3
   },
@@ -238,9 +238,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 18,
   }
 });
 

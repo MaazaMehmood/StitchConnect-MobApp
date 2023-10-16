@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   radioText: {
-    fontWeight: 'medium',
-    fontSize: 16,
+    fontWeight: '500',
+    fontSize: 18,
     color: '#ffff',
   }
 });

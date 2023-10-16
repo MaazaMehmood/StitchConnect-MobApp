@@ -24,6 +24,9 @@ import Settings from './screens/Settings';
 import Favourites from './screens/Favourites';
 import DrawerNavigator from './components/DrawerNavigator';
 import Search from './screens/Search';
+import Measurements from './screens/order/Measurements';
+import OrderSummary from './screens/order/OrderSummary';
+import Payment from './screens/order/Payment';
 
 
 const Stack = createNativeStackNavigator();
@@ -59,6 +62,9 @@ function App() {
                 </TouchableOpacity>
               )
               }} />
+            <Stack.Screen name="Measurements" component={ Measurements} />
+            <Stack.Screen name="Order Summary" component={ OrderSummary }  />
+            <Stack.Screen name="Payment" component={ Payment } />
             <Stack.Screen name="Favourites" component={ Favourites } options={ {headerShown: false}} />
             <Stack.Screen name="Settings" component={ Settings } options={ {headerShown: false}} />
             <Stack.Screen name="Notifications" component={ Notifications } options={ {headerShown: false}} />

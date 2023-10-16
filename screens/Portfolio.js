@@ -8,8 +8,11 @@ import { connect } from 'react-redux';
 const { width, height } = Dimensions.get("screen");
 const thumbMeasure = (width - 48 - 32) / 3;
 
-
 function Portfolio  ({ navigation, user }) {
+
+  const handleOrder = () => {
+    navigation.navigate('Measurements')
+  }
   
   return (
     <View style={styles.profile}>
@@ -36,7 +39,7 @@ function Portfolio  ({ navigation, user }) {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.button, { backgroundColor: '#9579E3' }]}
-                    // onPress={}
+                    onPress={handleOrder}
                   >
                     <Text style={styles.buttonText}>Order Here</Text>
                   </TouchableOpacity>
@@ -44,34 +47,34 @@ function Portfolio  ({ navigation, user }) {
               )}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20 }}>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
+                    <Text style={{ fontWeight: '500', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Rating</Text>
                   </View>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>10</Text>
+                    <Text style={{ fontWeight: '500', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>10</Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Photos</Text>
                   </View>
                   <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 4, color: '#525F7F' }}>89</Text>
+                    <Text style={{ fontWeight: '500', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>89</Text>
                     <Text style={{ fontSize: 12, color: 'grey' }}>Orders</Text>
                   </View>
                 </View>
               </View>
               <View style={styles.nameInfo}>
-                <Text style={{ fontWeight: 'light', fontSize: 28, color: '#32325D' }}>Shah Jee, 27</Text>
+                <Text style={{ fontWeight: 'medium', fontSize: 24, color: '#32325D' }}>Shah Jee, 27</Text>
                 <Text style={{ fontSize: 16, color: '#32325D', marginTop: 10 }}>Gulshan e Iqbal, Karachi</Text>
               </View>
               <View style={{ marginTop: 20, marginBottom: 10 }}>
                 <Divider />
               </View>
               <View style={{ margin: 8, marginBottom: 30}}>
-                <Text style={{ fontSize: 15, color: '#525F7F', textAlign: "center", lineHeight: 20 }}>
+                <Text style={{ fontSize: 14, color: '#525F7F', textAlign: "center", lineHeight: 20 }}>
                 A designer of considerable range, whether it's crafting bespoke suits for gentlemen, designing elegant 
                 dresses for ladies, or creating custom clothing for all occasions.
                 </Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#525F7F' }}>Gallery</Text>
+                <Text style={{ fontWeight: '500', fontSize: 16, color: '#525F7F' }}>Gallery</Text>
                 { user.userType === "business" && (
                   <TouchableOpacity 
                   // onPress={}
@@ -145,7 +148,6 @@ const styles = StyleSheet.create({
   profileContainer: {
     width: width,
     height: height,
-    padding: 0,
     zIndex: 1
   },
   profileBackground: {
@@ -157,7 +159,6 @@ const styles = StyleSheet.create({
     position: "relative",
     padding: 10,
     marginBottom: 80,
-    marginHorizontal: 3,
     marginTop: '40%',
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
@@ -185,16 +186,16 @@ const styles = StyleSheet.create({
   button: {
     width: 110,
     padding: 10,
-    paddingHorizontal: 15,
+    paddingHorizontal: 13,
     borderRadius: 10,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: '#ffff',
-    fontSize: 15,
+    fontSize: 16,
     letterSpacing: .5
   },
   nameInfo: {

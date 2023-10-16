@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    paddingVertical: 10,
+    backgroundColor: '#FCFAFA',
   },
   cardContainer: {
     alignItems: 'center',

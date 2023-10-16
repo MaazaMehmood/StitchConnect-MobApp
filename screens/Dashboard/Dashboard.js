@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerText: {
-    fontSize: 23,
+    fontSize: 24,
     fontWeight: '500',
     color: '#ffff'
   },
   userName: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '500',
     paddingHorizontal: 5,
     color: '#ffffff'
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9579E3',
   },
   toggleButtonText: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#777'
   },
   activeToggleButtonText: {

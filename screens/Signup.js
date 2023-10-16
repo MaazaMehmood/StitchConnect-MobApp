@@ -98,7 +98,7 @@ function Signup ({ route }) {
             {accountType === 'Business Account' && (
               <View>
 
-                  <Text style={{ fontSize: 17, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
                   <TextInput
                       style={styles.input}
                       label="Address / Location*"
@@ -179,9 +179,9 @@ const styles = StyleSheet.create({
   },  
   title: {
     position: 'relative',
-    fontWeight: 'bold',
+    fontWeight: '500',
     letterSpacing: .5,
-    fontSize: 25,
+    fontSize: 24,
     margin: 10,
     marginBottom: 50
   },
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     padding: 3,
     color: '#777',
     backgroundColor: 'transparent',
-    fontSize:  15,
+    fontSize:  14,
     overflowX: 'scroll'
   },
   button: {
@@ -209,9 +209,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 18,
   }
 });
 
