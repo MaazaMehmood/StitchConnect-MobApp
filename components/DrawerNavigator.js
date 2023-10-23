@@ -1,20 +1,19 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {  TouchableOpacity } from 'react-native';
 
-import CustomIcon from './CustomIcon';
+import {CustomIcon} from './CustomIcon';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { logout } from '../store/userActions';
 
 import Login from '../screens/Login';
-import Home from '../screens/Home';
+import {Home} from '../screens/Home';
 import UserProfile from '../screens/UserProfile';
 import Portfolio from '../screens/Portfolio';
-import Settings from '../screens/Settings';
-import Favourites from '../screens/Favourites';
+import {Settings} from '../screens/Settings';
+import {Favorites} from '../screens/Favorites';
 import Dashboard from '../screens/Dashboard/Dashboard';
-
 
 
 const Drawer = createDrawerNavigator();
@@ -72,21 +71,23 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             }} 
             />
             <Drawer.Screen name="Portfolio" component={Portfolio} 
-              options={() => ({
+              options={{
               drawerIcon: ({ focused }) => {
                 const activeColor = focused ? 'white' : '#22CCDD';
-                return <AntDesign name="profile" size={23} color={activeColor} />}
-              })}
+                return <AntDesign name="profile" size={23} color={activeColor} />
+              },  headerShown: false }}
             />
           </>
         )}
-        <Drawer.Screen name="Favourites" component={Favourites} 
-          options={{
-            drawerIcon: ({ focused }) => {
-            const activeColor = focused ? 'white' : 'navy';
-            return <CustomIcon iconName="heart-outline" color={activeColor} />
-          }}} 
-        />
+        { user.userType === "customer" && (
+          <Drawer.Screen name="Favorites" component={Favorites} 
+            options={{
+              drawerIcon: ({ focused }) => {
+              const activeColor = focused ? 'white' : 'navy';
+              return <CustomIcon iconName="heart-outline" color={activeColor} />
+            }}} 
+          />
+        )}
         <Drawer.Screen name="Settings" component={Settings} 
           options={{ drawerIcon: ({ focused }) => {
             const activeColor = focused ? 'white' : '#3498db';

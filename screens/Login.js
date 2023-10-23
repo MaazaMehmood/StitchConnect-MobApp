@@ -5,28 +5,25 @@ import { connect } from 'react-redux';
 import { login } from '../store/userActions';
 
 
-function Login ({ navigation, login }) {
+function Login ({ login ,  navigation }) {
   
   const [nameEmail, setNameEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('');
   
-
   const handleSignup = () => {
     navigation.navigate('Account');
   };
 
-
   const handleLogin = () => {
     // login logic, API calls, authentication, etc.
 
-    console.log('Email:', nameEmail);
-    console.log('Account type:', accountType);
+    console.log({ nameEmail });
+    console.log({ accountType });
 
     const user = { name: nameEmail, userType: accountType };
     console.log(user); 
     
-
     if (accountType)  {
       login(user);
       navigation.navigate('Home');
@@ -148,8 +145,9 @@ const styles = StyleSheet.create({
   }
 });
 
+
 const mapDispatchToProps = {
   login,
-}
+};
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 
 
 function Onboarding ({ navigation }) {
@@ -79,4 +79,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Onboarding;
+
+export {Onboarding};

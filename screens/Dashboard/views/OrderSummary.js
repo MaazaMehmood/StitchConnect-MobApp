@@ -1,7 +1,7 @@
 import React from 'react';
 import { View,Text, StyleSheet } from 'react-native';
-import DashboardCard from '../../../components/dashboard/DashboardCard';
-import OrderProgressChart from '../../../components/dashboard/OrderProgressChart';
+import {DashboardCard} from '../../../components/dashboard/DashboardCard';
+import {OrderProgressChart} from '../../../components/dashboard/OrderProgressChart';
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -48,4 +48,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default OrderSummary;
+
+export {OrderSummary};

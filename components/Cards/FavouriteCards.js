@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import CustomIcon from '../CustomIcon';
-
+import {CustomIcon} from '../CustomIcon';
 
 
 const FavouriteCards = ({ tailor,  id, removeFavorites }) => {
@@ -81,5 +80,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FavouriteCards;
+export {FavouriteCards};
 

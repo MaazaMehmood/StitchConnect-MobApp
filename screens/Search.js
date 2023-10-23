@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import SearchCard from '../components/Cards/SearchCard';
+import {SearchBar} from '../components/SearchBar';
+import {SearchCard} from '../components/Cards/SearchCard';
 
 
 function Search ({ navigation }) {
@@ -71,4 +71,4 @@ function Search ({ navigation }) {
 };
 
 
-export default Search;
+export {Search};

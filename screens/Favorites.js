@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import FavouriteCards from '../components/Cards/FavouriteCards';
+import {FavouriteCards} from '../components/Cards/FavouriteCards';
 
 
-function Favourites() {
+function Favorites() {
 
   const [favorites, setFavorites] = useState([
     {
@@ -88,4 +88,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Favourites;
+
+export {Favorites};

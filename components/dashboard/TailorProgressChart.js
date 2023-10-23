@@ -3,7 +3,6 @@ import { View, Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 
 
-
 const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'], // X-axis labels (e.g., months)
     datasets: [
@@ -45,5 +44,5 @@ const chartData = {
     );
   };
   
-  export default TailorProgressChart;
+  export {TailorProgressChart};
   

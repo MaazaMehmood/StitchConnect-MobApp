@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Switch, ScrollView, StyleSheet } from 'react-native';
-import CustomIcon from '../components/CustomIcon';
-
+import {CustomIcon} from '../components/CustomIcon';
 
 
 function Settings ({ navigation }) {
@@ -97,4 +96,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settings;
+
+export {Settings};

@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import { Divider } from 'react-native-paper';
-import CustomIcon from '../components/CustomIcon';
+import {CustomIcon} from '../components/CustomIcon';
 import { connect } from 'react-redux';
 
 
 const { width, height } = Dimensions.get("screen");
 const thumbMeasure = (width - 48 - 32) / 3;
 
+
 function Portfolio  ({ navigation, user }) {
+
+  const[icon, setIcon]= useState('heart-outline');
+
+  const handleFavorites= () => {
+    setIcon(icon === 'heart'? 'heart-outline' : 'heart');
+    // addToFavorites(id);
+  } 
+
+  const handleBack = () => {
+    navigation.navigate('Home');
+  }
 
   const handleOrder = () => {
     navigation.navigate('Measurements')
@@ -22,6 +34,16 @@ function Portfolio  ({ navigation, user }) {
           source={require('../assets/images/bg.png')}
           style={styles.profileBackground}
         >
+
+          <View style={{backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 30, padding: 20}}>
+            <TouchableOpacity onPress={handleBack}>
+                <CustomIcon iconName="arrow-back-outline" color="#ffff" />
+            </TouchableOpacity>
+            <Text style={styles.headerText}>Portfolio</Text>
+            <TouchableOpacity onPress={handleFavorites}>
+                <CustomIcon iconName={user === 'customer' ? icon : '' } color="#ffff" />
+            </TouchableOpacity>
+          </View>
           
           <ScrollView showsVerticalScrollIndicator={false} >
             <View style={styles.profileCard}>
@@ -29,7 +51,7 @@ function Portfolio  ({ navigation, user }) {
                 <Image source={require('../assets/images/formaluser.png')} style={styles.avatar} />
               </View>
               <View style={styles.info}>
-              { user.userType === 'customer' && (
+             
                 <View style={{ marginTop: 20, paddingBottom: 24, flexDirection: 'row', justifyContent: 'center' }}>
                   <TouchableOpacity
                     style={[styles.button, { borderWidth: 1, borderColor: '#571DD2', backgroundColor: 'transparent' }]}
@@ -37,14 +59,17 @@ function Portfolio  ({ navigation, user }) {
                   >
                     <Text style={[styles.buttonText, { color: '#571DD2'}]}>Message</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[styles.button, { backgroundColor: '#9579E3' }]}
-                    onPress={handleOrder}
-                  >
-                    <Text style={styles.buttonText}>Order Here</Text>
-                  </TouchableOpacity>
+                  
+                  { user.userType === 'customer' && (
+                    <TouchableOpacity
+                      style={[styles.button, { backgroundColor: '#9579E3' }]}
+                      onPress={handleOrder}
+                    >
+                      <Text style={styles.buttonText}>Order Here</Text>
+                    </TouchableOpacity>
+                   )}
                 </View>
-              )}
+             
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 20 }}>
                   <View style={{ alignItems: 'center' }}>
                     <Text style={{ fontWeight: '500', fontSize: 18, marginBottom: 4, color: '#525F7F' }}>2<CustomIcon iconName="star" color='#525F7F' /></Text>
@@ -133,6 +158,7 @@ function Portfolio  ({ navigation, user }) {
                 </View>
               </View>
             </View>
+
           </ScrollView>
         </ImageBackground>
 
@@ -155,11 +181,16 @@ const styles = StyleSheet.create({
     width: width,
     // height: height
   },
+  headerText: {
+    fontSize: 24,
+    fontWeight: '500',
+    color: '#ffff'
+  },
   profileCard: {
     position: "relative",
     padding: 10,
     marginBottom: 80,
-    marginTop: '40%',
+    marginTop: '20%',
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
     backgroundColor: "#ffff",
@@ -214,5 +245,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   user: state.user.user,
 });
+
 
 export default connect(mapStateToProps)(Portfolio);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text,TouchableOpacity, Image, StyleSheet } from 'react-native';
-import RadioButton from '../components/RadioButton';
+import {RadioButton} from '../components/RadioButton';
 
 
 function Account ({ navigation }) {
@@ -73,4 +73,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Account;
+
+export {Account};

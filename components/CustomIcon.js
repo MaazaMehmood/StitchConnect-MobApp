@@ -6,4 +6,4 @@ const CustomIcon = ({ iconName, color}) => {
   return <Ionicons name={iconName} color={color} size={22} />;
 };
 
-export default CustomIcon;
+export {CustomIcon};

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import HomeCard from '../components/Cards/HomeCard';
+import {SearchBar} from '../components/SearchBar';
+import {HomeCard} from '../components/Cards/HomeCard';
 
 
 function Home ({ navigation }) {
@@ -63,4 +63,4 @@ function Home ({ navigation }) {
 };
 
 
-export default Home;
+export {Home};

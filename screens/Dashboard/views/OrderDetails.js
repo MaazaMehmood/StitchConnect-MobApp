@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Divider } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 
 
-const OrderDetails = ({ route }) => {
+function OrderDetails ({ route }) {
 //   const { order } = route.params; 
 
     const order = [
@@ -144,4 +143,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrderDetails;
+
+export  {OrderDetails};

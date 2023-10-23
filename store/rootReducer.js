@@ -1,5 +1,5 @@
 // import { combineReducers } from 'redux';
-// import userReducer from './UserReducer';
+// import {userReducer} from './UserReducer';
 
 
 // const rootReducer = combineReducers({
@@ -10,4 +10,4 @@
 
 // });
 
-// export default rootReducer;
+// export {rootReducer};

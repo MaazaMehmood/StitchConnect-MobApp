@@ -3,7 +3,6 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 
 
-
 // activity of a tailor in a month
 const monthlyActivityData = {
   labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
@@ -45,4 +44,4 @@ const TailorActivityChart = () => {
 };
 
 
-export default TailorActivityChart;
+export {TailorActivityChart};

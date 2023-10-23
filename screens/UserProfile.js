@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
 
-const UserProfile = ({ user }) => {
+function UserProfile ({ user }) {
 
   // const [userData, setUserData] = useState(null); // State to store user data
 

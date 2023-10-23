@@ -98,7 +98,7 @@ function Signup ({ route }) {
             {accountType === 'Business Account' && (
               <View>
 
-                  <Text style={{ fontSize: 16, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
                   <TextInput
                       style={styles.input}
                       label="Address / Location*"
@@ -215,4 +215,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Signup;
+
+export {Signup};

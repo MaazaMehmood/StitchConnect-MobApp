@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 
-
 const Cards = ({ navigation, tailor, width }) => {
 
   const handlePortfolio = () => {
@@ -76,5 +75,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Cards;
+export {Cards};
 

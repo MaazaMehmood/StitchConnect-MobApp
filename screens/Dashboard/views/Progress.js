@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View,Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import TailorProgressChart from '../../../components/dashboard/TailorProgressChart';
-import TailorActivityChart from '../../../components/dashboard/TailorActivityChart';
+import {TailorProgressChart} from '../../../components/dashboard/TailorProgressChart';
+import {TailorActivityChart} from '../../../components/dashboard/TailorActivityChart';
 import { FontAwesome } from '@expo/vector-icons';
 
 
@@ -121,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Progress;
+export {Progress};

@@ -35,7 +35,8 @@ function  Measurements ({ navigation }) {
   const [other, setOther] = useState('');
 
   const handleOrderSummary = () => {
-    navigation.navigate('Order Summary', {
+    navigation.navigate('Order',
+     {
       garmentStatus,
       garmentDetails,
       measurements: {
@@ -48,19 +49,20 @@ function  Measurements ({ navigation }) {
         trouser,
         other,
       },
-    });
+    }
+    );
     
   }
 
   return (
     <ScrollView style={styles.container}>
-      <View style={{ flexDirection: 'column', justifyContent: 'space-around', margin: 15 }}>
+      <View style={{ flexDirection: 'column', justifyContent: 'space-around', margin: 10 }}>
         <Text style={styles.heading}>Shah jee</Text>
-        <Text>abc area block 12, Karachi</Text>
+        <Text style={{ color: '#777'}}>abc area block 12, Karachi</Text>
       </View>
       
       <View  style={ styles.section }>
-       <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Select garment type</Text>
+       <Text style={{  fontSize: 18, fontWeight: 500, marginVertical: 15 }}>Select garment type</Text>
         {garmentTypes.map((garmentType, index) => (
           <View key={index}>
             <Checkbox.Item
@@ -85,7 +87,7 @@ function  Measurements ({ navigation }) {
       </View>
       
       <View  style={ styles.section }>
-        <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Measurements</Text>
+        <Text style={{  fontSize: 18, fontWeight: 500, marginVertical: 15 }}>Measurements</Text>
         <TextInput
           style={styles.scale}
           label="length"
@@ -162,6 +164,7 @@ function  Measurements ({ navigation }) {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -179,19 +182,19 @@ const styles = StyleSheet.create({
   },
   scale: {
     alignItems: 'left',
-    borderWidth: 1,
-    borderColor: '#E7E0FA',
+    marginBottom: 3,
+    padding: 3,
     color: '#777',
     backgroundColor: 'transparent',
     fontSize:  14,
-    margin: 5
+    overflowX: 'scroll'
   },
   section: {
     backgroundColor: '#ffffff',
-    padding: 10,
-    margin: 2,
+    padding: 8,
+    marginTop: 20,
     width: '100%',
-    shadowColor: '#000000',
+    shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
@@ -214,4 +217,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Measurements;
+
+export {Measurements};

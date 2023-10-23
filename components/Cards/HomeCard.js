@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableWithoutFeedback, FlatList, Keyboard, StyleSheet } from 'react-native';
-import Cards from './Cards';
-
+import { View, Text, ScrollView, FlatList, StyleSheet } from 'react-native';
+import {Cards} from './Cards';
 
 
 const HomeCard = ({ navigation, data }) => {
@@ -91,4 +90,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeCard;
+export {HomeCard};

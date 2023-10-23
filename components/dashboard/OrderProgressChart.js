@@ -85,4 +85,4 @@ const OrderProgressChart = () => {
   );
 };
 
-export default OrderProgressChart;
+export {OrderProgressChart};

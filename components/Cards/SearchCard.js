@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableWithoutFeedback, FlatList, Keyboard, StyleSheet } from 'react-native';
-import Cards from './Cards';
-
+import { View, FlatList, StyleSheet } from 'react-native';
+import {Cards} from './Cards';
 
 
 const SearchCard = ({ navigation, searchData }) => {
@@ -35,4 +34,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SearchCard;
+export {SearchCard};

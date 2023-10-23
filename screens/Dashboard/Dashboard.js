@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
-import CustomIcon from '../../components/CustomIcon';
-import OrderSummary from './views/OrderSummary';
-import Progress from './views/Progress';
-import OrderDetails from './views/OrderDetails';
+import {CustomIcon} from '../../components/CustomIcon';
+import {OrderSummary} from './views/OrderSummary';
+import {Progress} from './views/Progress';
+import {OrderDetails} from './views/OrderDetails';
 
 
 const { width, height } = Dimensions.get("screen");
+
 
 function Dashboard ({ navigation, user }) {
 
@@ -162,5 +163,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   user: state.user.user,
 });
+
 
 export default connect(mapStateToProps)(Dashboard);
