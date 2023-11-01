@@ -11,10 +11,9 @@ function OrderSummary ({ navigation, garmentStatus, garmentDetails, measurements
 
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         
-        <View style={ [ styles.section , { backgroundColor: '#9579E3', padding: 10}]}>
+        <View style={ [ styles.section , { backgroundColor: '#9579E3', padding: 15}]}>
             <Image source={require('../../../assets/images/SC.png')} style={{ height: 70, width: 70,}}/>
-            <Text style={[styles.title, { color: '#ffff'}]}>Billing Address</Text>
-            <Text style={[styles.sectionTitle, { color: '#ffff'}]}>Maaza Mehmood</Text>
+            <Text style={[styles.sectionTitle, { color: '#ffff'}]}>Shah jee</Text>
             <Text style={{ color: '#ECEAEA'}} >abc area block 12, Karachi</Text>
         </View>
 
@@ -42,31 +41,31 @@ function OrderSummary ({ navigation, garmentStatus, garmentDetails, measurements
             <Text style={styles.title}>Measurements</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Length </Text>
-                <Text style={{ fontWeight: '500',color: "#444"}}>{measurements.length}</Text>
+                <Text style={{ fontWeight: '500',color: "#444", margin: 3}}>{measurements.length}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Neck </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.neck}</Text>
+                <Text style={{ fontWeight: '500', color: "#444", margin: 3}}>{measurements.neck}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Shoulders </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.shoulders}</Text>
+                <Text style={{ fontWeight: '500', color: "#444", margin: 3}}>{measurements.shoulders}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Waist </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.waist}</Text>
+                <Text style={{ fontWeight: '500', color: "#444",  margin: 3}}>{measurements.waist}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Sleeves </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.sleeves}</Text>
+                <Text style={{ fontWeight: '500', color: "#444",  margin: 3}}>{measurements.sleeves}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Trouser </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.trouser}</Text>
+                <Text style={{ fontWeight: '500', color: "#444",  margin: 3}}>{measurements.trouser}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
                 <Text style={{fontSize: 14, margin: 3}}> Other </Text>
-                <Text style={{ fontWeight: '500', color: "#444"}}>{measurements.other}</Text>
+                <Text style={{ fontWeight: '500', color: "#444", margin: 3}}>{measurements.other}</Text>
             </View>
         </View>
 
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#ffffff',
     padding: 8,
-    marginTop: 20,
+    marginTop: 15,
     width: width,
     shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },

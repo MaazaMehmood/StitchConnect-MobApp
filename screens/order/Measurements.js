@@ -93,56 +93,56 @@ function  Measurements ({ navigation }) {
           label="length"
           onChangeText={text => setLength(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="neck"
           onChangeText={text => setNeck(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="shoulders"
           onChangeText={text => setShoulders(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="chest"
           onChangeText={text =>setChest(text) }
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="waist"
           onChangeText={text => setWaist(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="sleeves length"
           onChangeText={text => setSleeves(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="trouser length"
           onChangeText={text => setTrouser(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
         <TextInput
           style={styles.scale}
           label="other"
           onChangeText={text => setOther(text)}
           underlineColor='#9999'
-          activeUnderlineColor='#9579E3'
+          activeUnderlineColor='#B7A8DF'
         />
       </View>
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#ffffff',
     padding: 8,
-    marginTop: 20,
+    marginTop: 15,
     width: '100%',
     shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },

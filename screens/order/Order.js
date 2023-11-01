@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View,Text, TouchableOpacity, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import {BillingDetails} from './order/BillingDetails';
 import {OrderSummary} from './order/OrderSummary';
-import {Payment} from './order/Payment';
+import { BillingDetails } from './order/BillingDetails';
 
 
 const { width, height } = Dimensions.get("screen");
@@ -12,7 +11,7 @@ function Order ({ navigation , route }) {
 
   const { garmentStatus, garmentDetails, measurements } = route.params;
 
-  const [activeSection, setActiveSection] = useState('billing');
+  const [activeSection, setActiveSection] = useState('summary');
 
   const toggleSection = (section) => {
     setActiveSection(section);
@@ -26,14 +25,6 @@ function Order ({ navigation , route }) {
                 <TouchableOpacity
                     style={[
                         styles.toggleButton,
-                        activeSection === 'billing' && styles.activeToggleButton,
-                    ]}
-                >
-                <Text style={[styles.heading, activeSection === 'billing' && styles.activeToggleButtonText]}>Billing Details</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[
-                        styles.toggleButton,
                         activeSection === 'summary' && styles.activeToggleButton,
                     ]}
                 >
@@ -42,37 +33,20 @@ function Order ({ navigation , route }) {
                 <TouchableOpacity
                     style={[
                         styles.toggleButton,
-                        activeSection === 'payment' && styles.activeToggleButton,
+                        activeSection === 'billing' && styles.activeToggleButton,
                     ]}
                 >
-                <Text style={[styles.heading, activeSection === 'payment' && styles.activeToggleButtonText]}>Payment</Text>
+                <Text style={[styles.heading, activeSection === 'billing' && styles.activeToggleButtonText]}>Billing Details</Text>
                 </TouchableOpacity>
             </View>
             
-            {activeSection === 'billing' && (
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    <BillingDetails/>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => toggleSection('summary')}
-                    >
-                        <Text style={[styles.buttonText, { marginLeft: '80%' }]}>next</Text>
-                    </TouchableOpacity>
-                </ScrollView>
-            )}
             {activeSection === 'summary' && (
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <OrderSummary  garmentStatus={garmentStatus} garmentDetails={garmentDetails} measurements={measurements}/>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[styles.button, {marginLeft: '70%'}]}
                             onPress={() => toggleSection('billing')}
-                        >
-                            <Text style={[styles.buttonText, { color: '#9999'}]}>back</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => toggleSection('payment')}
                         >
                             <Text style={styles.buttonText}>continue</Text>
                         </TouchableOpacity>
@@ -80,9 +54,9 @@ function Order ({ navigation , route }) {
                     
                 </ScrollView>
             )}
-            {activeSection === 'payment' && (
+            {activeSection === 'billing' && (
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <Payment/>
+                    <BillingDetails />
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
                         <TouchableOpacity
                             style={styles.button}
@@ -121,14 +95,15 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     padding: 8,
-    marginHorizontal: 20,
+    marginHorizontal: 40,
   },
   activeToggleButton: {
     borderBottomWidth: 1,
     borderColor: '#9579E3',
   },
   heading: {
-    color: '#999'
+    color: '#999',
+    fontSize: 16,
   },
   activeToggleButtonText: {
     color: "#9579E3"
@@ -136,14 +111,15 @@ const styles = StyleSheet.create({
   button: {
     padding: 8,
     backgroundColor: '#transparent',
-    margin: 20,
+    marginVertical: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: '500',
+    fontWeight: 'light',
     color: '#9579E3',
-    fontSize: 18,
+    fontSize: 16,
+    letterSpacing: .5,
     textDecorationLine: 'underline'
   },
 });
