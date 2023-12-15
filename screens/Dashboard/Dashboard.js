@@ -27,8 +27,8 @@ function Dashboard ({ navigation, user }) {
 
       {/* Header */}
       <ImageBackground 
-      source={require('../../assets/images/bg.png')}
-      style={styles.header}>
+        source={require('../../assets/images/bg.png')}
+        style={styles.header}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 20}}>
           <TouchableOpacity onPress={handleBack}>
               <CustomIcon iconName="arrow-back-outline" color="#ffff" />
@@ -113,14 +113,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '500',
     color: '#ffff'
   },
   userName: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
     paddingHorizontal: 5,
     color: '#ffffff'
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingVertical: 2,
     marginHorizontal: 20,
-    top: '-5%'
+    top: '-10%'
   },
   toggleButton: {
     flex: 1,

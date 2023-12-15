@@ -20,7 +20,7 @@ const HomeCard = ({ navigation, data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) => < Cards navigation={navigation} tailor={item} width={250} /> } 
+                renderItem={ ({ item }) => < Cards navigation={navigation} tailor={item} width={250}/> } 
               />
             </View>
           </View>
@@ -33,7 +33,7 @@ const HomeCard = ({ navigation, data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={230} /> } 
+                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={250} /> } 
               />
             </View>
           </View>
@@ -46,7 +46,7 @@ const HomeCard = ({ navigation, data }) => {
                 keyExtractor={(item) => item.id}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={230}/> } 
+                renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={250}/> } 
               />
             </View>
           </View>

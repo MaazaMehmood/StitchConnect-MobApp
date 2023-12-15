@@ -46,7 +46,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             headerTitle: 'Stitch Connect',
             headerRight: () => (
               <TouchableOpacity style={{ marginRight: 15 }} onPress={handleNotifications}>
-                <CustomIcon iconName="notifications-outline" color="#755ED1" />
+                <CustomIcon iconName="notifications-outline" color="#000000" />
               </TouchableOpacity>
             ),
             drawerIcon: ({ focused }) =>  {

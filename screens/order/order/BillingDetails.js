@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
-import { RadioButton, TextInput } from 'react-native-paper';
-
+import { RadioButton, TextInput, Divider } from 'react-native-paper';
+import { CustomIcon } from '../../../components/CustomIcon';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -33,24 +35,25 @@ function BillingDetails () {
       return (
         <View style={styles.creditCardFields}>
             <TextInput
-                style={styles.input}
-                label="Card Number"
-                value={cardNo}
-                onChangeText={(text) => setCardNo(text)}
-                mode='outlined'
-                outlineColor='#9999'
-                outlineStyle={{
-                    borderRadius: 8
-                }}
-                activeOutlineColor='#B7A8DF'
+                  style={styles.input}
+                  label="Card Number"
+                  value={cardNo}
+                  onChangeText={(text) => setCardNo(text)}
+                  mode='outlined'
+                  outlineColor='#CBC5DC'
+                  outlineStyle={{
+                      borderRadius: 8
+                  }}
+                  activeOutlineColor='#B7A8DF'
             />
+            
             <TextInput
                 style={styles.input}
                 label="Expiration (MM/YY)"
                 value={expiration}
                 onChangeText={(text) => setExpiration(text)}
                 mode='outlined'
-                outlineColor='#9999'
+                outlineColor='#CBC5DC'
                 outlineStyle={{
                     borderRadius: 8
                 }}
@@ -62,7 +65,7 @@ function BillingDetails () {
                 value={cardCode}
                 onChangeText={(text) => setCardCode(text)}
                 mode='outlined'
-                outlineColor='#9999'
+                outlineColor='#CBC5DC'
                 outlineStyle={{
                     borderRadius: 8
                 }}
@@ -83,76 +86,88 @@ function BillingDetails () {
       {/* billing details */}
       <View style={styles.section}>
         <Text style={styles.title}> Contact Detail </Text>
-        <TextInput
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+          <CustomIcon iconName='person-circle-sharp' color='#9579E3' />
+          <TextInput
             style={styles.input}
             label="Name"
             value={name}
             onChangeText={text => setName(text)}
-            mode='outlined'
-            outlineColor='#9999'
-            outlineStyle={{
-                borderRadius: 8
-            }}
-            activeOutlineColor='#B7A8DF'
-        />
-        <TextInput
-            style={styles.input}
-            label="Contact"
-            value={contact}
-            keyboardType='numeric'
-            onChangeText={text => setContact(text)}
-            mode='outlined'
-            outlineColor='#9999'
-            outlineStyle={{
-                borderRadius: 8
-            }}
-            activeOutlineColor='#B7A8DF'
-        />
+            mode='underlined'
+            underlineColor='#CBC5DC'
+            activeUnderlineColor='#B7A8DF'
+          />
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+          <FontAwesome name="phone" size={22} color="#9579E3" />   
+          <TextInput
+              style={styles.input}
+              label="Contact"
+              value={contact}
+              keyboardType='numeric'
+              onChangeText={text => setContact(text)}
+              mode='underlined'
+              underlineColor='#CBC5DC'
+              activeUnderlineColor='#B7A8DF'
+          />
+        </View>
       </View>
       
       <View style={styles.section}>
         <Text style={styles.title}> Delivery Address </Text>
-        <TextInput
-            style={styles.input}
-            label="Address"
-            value={address}
-            onChangeText={text => setAddress(text)}
-            mode='outlined'
-            outlineColor='#9999'
-            outlineStyle={{
-                borderRadius: 8
-            }}
-            activeOutlineColor='#B7A8DF'
-        />
-        <TextInput
-            style={styles.input}
-            label="City"
-            value={city}
-            onChangeText={text => setCity(text)}
-            mode='outlined'
-            outlineColor='#9999'
-            outlineStyle={{
-                borderRadius: 8
-            }}
-            activeOutlineColor='#B7A8DF'
-        />
-        <TextInput
-            style={styles.input}
-            label="Postal Code"
-            value={postalCode}
-            keyboardType='numeric'
-            onChangeText={text => setPostalCode(text)}
-            mode='outlined'
-            outlineColor='#9999'
-            outlineStyle={{
-                borderRadius: 8
-            }}
-            activeOutlineColor='#B7A8DF'
-        />
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+          <CustomIcon iconName='location' color='#9579E3' />
+          <TextInput
+              style={styles.input}
+              label="Address"
+              value={address}
+              onChangeText={text => setAddress(text)}
+              mode='underlined'
+              underlineColor='#CBC5DC'
+              activeUnderlineColor='#B7A8DF'
+          />
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+        <MaterialIcons name="location-city" size={22} color="#9579E3" />
+          <TextInput
+              style={styles.input}
+              label="City"
+              value={city}
+              onChangeText={text => setCity(text)}
+              mode='underlined'
+              underlineColor='#CBC5DC'
+              activeUnderlineColor='#B7A8DF'
+          />
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+          <MaterialIcons name="local-post-office" size={22} color="#9579E3" />
+          <TextInput
+              style={styles.input}
+              label="Postal Code"
+              value={postalCode}
+              keyboardType='numeric'
+              onChangeText={text => setPostalCode(text)}
+              mode='underlined'
+              underlineColor='#CBC5DC'
+              activeUnderlineColor='#B7A8DF'
+          />
+        </View>
       </View>
 
       {/* payment details */}
-      <View style={styles.section}>
+        <View style={styles.section}>
+          <Text style={styles.title}> Total Payment</Text>
+          <View style={{flexDirection: 'col', justifyContent: 'center', marginVertical: 3}}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5, borderRadius: 8}}>
+                <Text style={{fontSize: 14, margin: 3}}> Sub Total </Text>
+                <Text style={{ fontWeight: '500', fontSize: 16}}>Rs. 688.7</Text>
+            </View>
+            <View style={{ backgroundColor: '#F9F8FC', flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, padding: 10, borderRadius: 8}}>
+                <Text style={{fontSize: 14, margin: 3}}> Total </Text>
+                <Text style={{ fontWeight: '500', fontSize: 16}}>Rs. 2900</Text>
+            </View>
+          </View>
+          <Divider/>
           <Text style={styles.title}> Payment Method </Text>
           <RadioButton.Group onValueChange={(value) => handlePaymentChange(value)} value={paymentMethod}>
               <View style={styles.radioOption}>
@@ -174,18 +189,7 @@ function BillingDetails () {
           </RadioButton.Group>
           {renderCreditCardFields()}
 
-          <View style={{flexDirection: 'col', justifyContent: 'center', marginVertical: 40}}>
-            <View style={{ backgroundColor: '#C5B8E7', flexDirection: 'row', justifyContent: 'space-between', margin: 3, padding: 10, borderRadius: 10}}>
-                <Text style={{fontSize: 14, margin: 3}}> Sub Total </Text>
-                <Text style={{ fontWeight: '500', fontSize: 16}}>PKR 688.7</Text>
-            </View>
-            <View style={{ backgroundColor: '#C5B8E7', flexDirection: 'row', justifyContent: 'space-between', margin: 5, padding: 10, borderRadius: 10}}>
-                <Text style={{fontSize: 14, margin: 3}}> Total </Text>
-                <Text style={{ fontWeight: '500', fontSize: 16}}>PKR 2900</Text>
-            </View>
         </View>
-
-      </View>
     </ScrollView>
   );
 };
@@ -198,7 +202,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#ffffff',
     padding: 8,
-    marginTop: 20,
+    marginTop: 3,
     width: width,
     shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },
@@ -207,9 +211,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500', 
-    marginVertical: 15, 
+    marginVertical: 8, 
     padding: 3,
   },
   radioOption: {
@@ -219,19 +223,27 @@ const styles = StyleSheet.create({
   },
   creditCardFields: {
     marginTop: 10,
+    flexDirection: 'col',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
+    Left: '50%',
   },
   input: {
     alignItems: 'left',
-    marginBottom: 8,
-    marginHorizontal: 10,
+    marginBottom: 2,
     color: '#777',
     backgroundColor: 'transparent',
     fontSize:  14,
     overflowX: 'scroll',
+    width: '99%'
   },
   button: {
-    borderRadius: 5,
-    padding: 10,
+    padding: 15,
+    paddingRight: 50,
+    paddingLeft: 50,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#9579E3',

@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   title: {
     letterSpacing: .5,
-    fontSize: 24,
+    fontSize: 20,
     marginBottom: 30,
   },
   input: {
@@ -123,25 +123,25 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 55,
-    paddingLeft: 55,
-    borderRadius: 50,
+    paddingRight: 50,
+    paddingLeft: 50,
+    borderRadius: 20,
     backgroundColor: '#9579E3',
-    margin: 10,
+    marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 18,
+    fontSize: 16,
   },
   signup: {
     color: '#9579E3',
     textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',
-    margin: 5
+    marginTop: 20
   }
 });
 

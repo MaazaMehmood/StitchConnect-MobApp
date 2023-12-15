@@ -45,10 +45,10 @@ function Order ({ navigation , route }) {
                     <OrderSummary  garmentStatus={garmentStatus} garmentDetails={garmentDetails} measurements={measurements}/>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
                         <TouchableOpacity
-                            style={[styles.button, {marginLeft: '70%'}]}
+                            style={[styles.button, {marginLeft: '70%', backgroundColor: '#B7A8DF',}]}
                             onPress={() => toggleSection('billing')}
                         >
-                            <Text style={styles.buttonText}>continue</Text>
+                            <Text style={styles.buttonText}>next</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -59,13 +59,13 @@ function Order ({ navigation , route }) {
                     <BillingDetails />
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[styles.button, { backgroundColor: '#F9F8FC'}]}
                             onPress={() => toggleSection('summary')}
                         >
                             <Text style={[styles.buttonText, { color: '#9999'}]}>back</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[styles.button, { backgroundColor: '#B7A8DF'}]}
                             // onPress={}
                         >
                             <Text style={styles.buttonText}>confirm</Text>
@@ -91,36 +91,39 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 10,
+    // backgroundColor: '#000000'
   },
   toggleButton: {
-    padding: 8,
-    marginHorizontal: 40,
+    padding: 5,
+    paddingHorizontal: 50,
   },
   activeToggleButton: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 1.5,
     borderColor: '#9579E3',
+    TransitionEvent: .5,
   },
   heading: {
     color: '#999',
-    fontSize: 16,
+    fontSize: 14,
   },
   activeToggleButtonText: {
-    color: "#9579E3"
+    color: "#9579E3",
   },
   button: {
-    padding: 8,
-    backgroundColor: '#transparent',
-    marginVertical: 20,
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
+    alignItems: 'center',
     fontWeight: 'light',
-    color: '#9579E3',
+    color: '#FFFFFF',
     fontSize: 16,
-    letterSpacing: .5,
-    textDecorationLine: 'underline'
+    fontWeight: 500
+
   },
 });
 

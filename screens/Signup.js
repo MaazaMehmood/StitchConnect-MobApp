@@ -35,7 +35,7 @@ function Signup ({ route }) {
     <ImageBackground
         source={require('../assets/images/bg.png')}
         style={styles.ImageBackground}
-      >
+    >
       <ScrollView  showsVerticalScrollIndicator={false}>
         <View style={styles.Container}>
           <Text style={styles.title}>Sign Up</Text>
@@ -83,6 +83,15 @@ function Signup ({ route }) {
                 underlineColor='#9999'
                 activeUnderlineColor='#9579E3'
             />
+            <TextInput
+                style={styles.input}
+                label="Address / Location*"
+                onChangeText={(text) => setAddress(text)}
+                value={address}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
+            />
+            
             <RadioButton.Group onValueChange={newValue => setGender(newValue)} value={gender}  >
               <Text style={{ margin: 3}} ></Text>
               <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
@@ -95,18 +104,13 @@ function Signup ({ route }) {
               </View>
             </RadioButton.Group>
 
+
+
             {accountType === 'Business Account' && (
               <View>
 
-                  <Text style={{ fontSize: 18, fontWeight: 500, marginVertical: 30 }}> Business Details</Text>
-                  <TextInput
-                      style={styles.input}
-                      label="Address / Location*"
-                      onChangeText={(text) => setAddress(text)}
-                      value={address}
-                      underlineColor='#9999'
-                      activeUnderlineColor='#9579E3'
-                  />
+                <Text style={{ fontSize: 16, fontWeight: 400, marginVertical: 30 }}> Business Details</Text>
+        
                   <TextInput
                       multiline={true}
                       numberOfLines={6}
@@ -168,7 +172,7 @@ const styles = StyleSheet.create({
     position: "relative",
     padding: 8,
     marginHorizontal: 8,
-    marginVertical: 15,
+    marginVertical: 40,
     borderRadius: 10,
     backgroundColor: "#ffff",
     shadowColor: "black",
@@ -181,9 +185,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     fontWeight: '500',
     letterSpacing: .5,
-    fontSize: 24,
-    margin: 10,
-    marginBottom: 50
+    fontSize: 20,
+    marginVertical: 30,
+    textAlign: 'center'
   },
   view: {
     marginBottom: 30,
@@ -191,7 +195,7 @@ const styles = StyleSheet.create({
   input: {
     alignItems: 'left',
     width: '100%',
-    marginBottom: 3,
+    marginBottom: 5,
     padding: 3,
     color: '#777',
     backgroundColor: 'transparent',
@@ -200,9 +204,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 55,
-    paddingLeft: 55,
-    borderRadius: 50,
+    paddingRight: 50,
+    paddingLeft: 50,
+    borderRadius: 20,
     backgroundColor: '#9579E3',
     margin: 30,
     justifyContent: 'center',
@@ -211,7 +215,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 18,
+    fontSize: 16,
   }
 });
 

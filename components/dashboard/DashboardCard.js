@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 4,
-    padding: 8,
+    padding: 5,
     margin: 3,
     width: '100%',
     height: 60,

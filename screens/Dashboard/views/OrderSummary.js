@@ -17,15 +17,15 @@ function OrderSummary () {
 
       < View  style={{marginVertical : 8}}>
         <View style={styles.container}>
-          <DashboardCard title="Total" number="42" icon="tasks" color="#734EB0" />
+          <DashboardCard title="Total" number="78" icon="tasks" color="#734EB0" />
         </View>
-        <View>  
-          <DashboardCard title="Complete" number="19878" icon="check-circle" color="#28159E" />
+        <View style={styles.container}>  
+          <DashboardCard title="Complete" number="198" icon="check-circle" color="#28159E" />
         </View>
         <View  style={styles.container}>
-          <DashboardCard title="In Progress" number="12" icon="spinner" color="#5CA2D4" />
+          <DashboardCard title="In Progress" number="8" icon="spinner" color="#5CA2D4" />
           </View>
-        <View>
+        <View style={styles.container}>
           <DashboardCard title="Pending" number="12" icon="clock-o" color="#C5B8E7" />
         </View>
       </View>
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heading: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
-    color: '#222',
+    color: '#333',
   }
 });
 

@@ -118,6 +118,16 @@ function UserProfile ({ user }) {
         underlineColor='#9999'
         activeUnderlineColor='#9579E3'
       />
+
+      <TextInput
+            style={styles.input}
+            label='Address'
+            value={isEditing ? editedAddress : ''}
+            onChangeText={text => setEditedAddress(text)}
+            editable={isEditing}
+            underlineColor='#9999'
+            activeUnderlineColor='#9579E3'
+      />
       
       <TextInput
         style={styles.input}
@@ -131,16 +141,6 @@ function UserProfile ({ user }) {
 
       { user.userType === "business" && (
         <>
-          
-          <TextInput
-            style={styles.input}
-            label='Address'
-            value={isEditing ? editedAddress : ''}
-            onChangeText={text => setEditedAddress(text)}
-            editable={isEditing}
-            underlineColor='#9999'
-            activeUnderlineColor='#9579E3'
-          />
           
           <TextInput
             style={styles.input}
@@ -204,7 +204,7 @@ function UserProfile ({ user }) {
 const styles = StyleSheet.create({
   scrollViewContainer: {
     flexGrow: 1,
-    alignItems: 'left',
+    alignItems: 'center',
     justifyContent: 'left',
     padding: 8,
     backgroundColor: '#ffff'
@@ -229,9 +229,9 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 50,
     padding: 15,
-    paddingRight: 55,
-    paddingLeft: 55,
-    borderRadius: 50,
+    paddingRight: 50,
+    paddingLeft: 50,
+    borderRadius: 20,
     backgroundColor: '#9579E3',
     margin: 50,
     justifyContent: 'center',
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 18,
+    fontSize: 16,
   }
 });
 

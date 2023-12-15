@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { Divider } from 'react-native-paper';
 
 
 const { width, height } = Dimensions.get("screen");
@@ -11,14 +12,24 @@ function OrderSummary ({ navigation, garmentStatus, garmentDetails, measurements
 
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         
-        <View style={ [ styles.section , { backgroundColor: '#9579E3', padding: 15}]}>
-            <Image source={require('../../../assets/images/SC.png')} style={{ height: 70, width: 70,}}/>
-            <Text style={[styles.sectionTitle, { color: '#ffff'}]}>Shah jee</Text>
-            <Text style={{ color: '#ECEAEA'}} >abc area block 12, Karachi</Text>
+        <View style={ styles.section }>
+            <View style={{ flexDirection: 'row', justifyContent: 'left', alignItems: 'center', marginVertical: 10 }}>
+                <Image source={require('../../../assets/images/SC.png')} style={{ height: 80, width: 80,}}/>
+                <Text style={styles.sectionTitle}>Shah jee</Text>
+            </View>
+             
+            <View style={{ marginVertical: 5}}>
+                <Text style={styles.title}>Order Date</Text>
+                <Text style={{ fontSize: 14 }}>Dec 15, 2023</Text>
+            </View>
+            <View style={{ marginVertical: 5}}>
+                <Text style={styles.title}>Order Status</Text>
+                <Text style={{ fontSize: 14, color: '#999'}}>not recieved</Text>
+            </View>
         </View>
 
         <View style={styles.section}>
-            <Text style={styles.title}>Selected Garment Types</Text>
+            <Text style={styles.title}>Garments Style</Text>
             {Object.keys(garmentStatus).map((garmentType) => (
             garmentStatus[garmentType] && (
                 <Text key={garmentType}  style={{ alignItems: 'center', margin: 3 }} >{garmentType}</Text>
@@ -26,12 +37,13 @@ function OrderSummary ({ navigation, garmentStatus, garmentDetails, measurements
         </View>
         
         <View style={styles.section}>
-            <Text style={styles.title}>Garment Details</Text>
+            <Text style={styles.title}>Description</Text>
             {Object.keys(garmentDetails).map((garmentType) => (
             garmentStatus[garmentType] && (
                 <View key={garmentType} style={{ margin: 3 }}>
-                    <Text style={{fontSize: 14, fontWeight: '500', margin: 3}}>{garmentType}</Text>
-                    <Text style={{ color: "#444"}} >{garmentDetails[garmentType]}</Text>
+                    <Text style={{fontSize: 14, fontWeight: '500', marginVertical: 5}}> {garmentType} # 1</Text>
+                    <Divider/>
+                    <Text style={{alignItems: 'center', marginVertical: 10}} > {garmentDetails[garmentType]} </Text>
                 </View>
             ))
             )}
@@ -71,13 +83,15 @@ function OrderSummary ({ navigation, garmentStatus, garmentDetails, measurements
 
         <View style={styles.section}>
             <Text style={styles.title}>Payment</Text>
-            <View style={{ backgroundColor: '#C5B8E7', flexDirection: 'row', justifyContent: 'space-between', margin: 3, padding: 10, borderRadius: 10}}>
-                <Text style={{fontSize: 14, margin: 3}}> Sub Total </Text>
-                <Text style={{ fontWeight: '500', fontSize: 16}}>PKR 688.7</Text>
-            </View>
-            <View style={{ backgroundColor: '#C5B8E7', flexDirection: 'row', justifyContent: 'space-between', margin: 5, padding: 10, borderRadius: 10}}>
-                <Text style={{fontSize: 14, margin: 3}}> Total </Text>
-                <Text style={{ fontWeight: '500', fontSize: 16}}>PKR 2900</Text>
+            <View style={{flexDirection: 'col', justifyContent: 'center', marginVertical: 3}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5, borderRadius: 8}}>
+                    <Text style={{fontSize: 14, margin: 3, color: '#888'}}> Sub Total </Text>
+                    <Text style={{ fontWeight: '500', fontSize: 16}}>Rs.688.7</Text>
+                </View>
+                <View style={{ backgroundColor: '#F9F8FC', flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, padding: 10, borderRadius: 8}}>
+                    <Text style={{fontSize: 14, margin: 3, color: '#888'}}> Total </Text>
+                    <Text style={{ fontWeight: '500', fontSize: 16}}>Rs.2900</Text>
+                </View>
             </View>
         </View>
        
@@ -89,16 +103,19 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#FCFAFA',
+    padding: 5
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: '500',
+    marginLeft: 8,
+    color: '#222'
   },
   section: {
     backgroundColor: '#ffffff',
     padding: 8,
-    marginTop: 15,
-    width: width,
+    marginTop: 3,
+    width: '100%',
     shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -106,9 +123,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500', 
-    marginVertical: 15, 
+    marginVertical: 10, 
   },
 });
 

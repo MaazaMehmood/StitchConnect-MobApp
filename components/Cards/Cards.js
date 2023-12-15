@@ -27,8 +27,8 @@ const Cards = ({ navigation, tailor, width }) => {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'col',
-    justifyContent: 'center',
-    alignItems: 'left',
+    justifyContent: 'left',
+    alignItems: 'center',
     // backgroundColor: '#fff',
     // borderRadius: 8,
     // shadowColor: '#000',
@@ -38,19 +38,20 @@ const styles = StyleSheet.create({
     // elevation: 3,
     margin: 5,
     padding: 3,
-    height: 200
+    height: 230
   },
   image: {
+    position: 'absolute',
     width: '100%',
-    height: '70%',
+    height: '60%',
     borderRadius: 5,
   },
   textContainer: {
     flexDirection: 'col',
-    justifyContent: 'left',
+    justifyContent: 'center',
     alignItems: 'left',
     padding: 3,
-    marginBottom:2,
+    marginTop: '55%',
     width: '100%',
     overflow: 'hidden'
   },

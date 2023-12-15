@@ -40,9 +40,11 @@ function Portfolio  ({ navigation, user }) {
                 <CustomIcon iconName="arrow-back-outline" color="#ffff" />
             </TouchableOpacity>
             <Text style={styles.headerText}>Portfolio</Text>
+            {/* {user === 'customer' ? */}
             <TouchableOpacity onPress={handleFavorites}>
-                <CustomIcon iconName={user === 'customer' ? icon : '' } color="#ffff" />
+                <CustomIcon iconName={icon} color="#ffff" />
             </TouchableOpacity>
+             {/* : '' } */}
           </View>
           
           <ScrollView showsVerticalScrollIndicator={false} >
@@ -182,7 +184,8 @@ const styles = StyleSheet.create({
     // height: height
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 20,
+    alignItems: 'center',
     fontWeight: '500',
     color: '#ffff'
   },
@@ -206,6 +209,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '30%'
   },
   avatar: {
+    alignItems: 'center',
     width: 124,
     height: 124,
     borderRadius: 62,
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffff',
-    fontSize: 16,
+    fontSize: 14,
     letterSpacing: .5
   },
   nameInfo: {

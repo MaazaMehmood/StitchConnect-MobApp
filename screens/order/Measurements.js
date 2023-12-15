@@ -62,7 +62,7 @@ function  Measurements ({ navigation }) {
       </View>
       
       <View  style={ styles.section }>
-       <Text style={{  fontSize: 18, fontWeight: 500, marginVertical: 15 }}>Select garment type</Text>
+       <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Ladies</Text>
         {garmentTypes.map((garmentType, index) => (
           <View key={index}>
             <Checkbox.Item
@@ -83,11 +83,11 @@ function  Measurements ({ navigation }) {
               />
             )}
           </View>
-          ))}
+        ))}
       </View>
       
       <View  style={ styles.section }>
-        <Text style={{  fontSize: 18, fontWeight: 500, marginVertical: 15 }}>Measurements</Text>
+        <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Measurements</Text>
         <TextInput
           style={styles.scale}
           label="length"
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#ffffff',
     padding: 8,
-    marginTop: 15,
+    marginTop: 3,
     width: '100%',
     shadowColor: '#9999',
     shadowOffset: { width: 0, height: 2 },

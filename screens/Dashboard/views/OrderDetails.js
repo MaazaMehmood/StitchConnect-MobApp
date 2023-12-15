@@ -9,7 +9,7 @@ function OrderDetails ({ route }) {
     const order = [
         {
             orderId: '1',
-            customerName: 'Abc',
+            customerName: 'Fatima Shahid Imam',
             customerAddress: 'abc area block 2, Karachi',
             customerContact: '123-456-7890',
             items: [
@@ -28,7 +28,7 @@ function OrderDetails ({ route }) {
         ]},
         {
             orderId: '2',
-            customerName: 'xyz',
+            customerName: 'Abeeha Syed',
             customerAddress: 'abc area block 2, Karachi',
             customerContact: '123-456-7890',
             items: [
@@ -36,18 +36,18 @@ function OrderDetails ({ route }) {
                 itemId: 'item1',
                 productName: 'T-shirt',
                 quantity: 2,
-                price: 20.0,
+                price: 2000.0,
             },
             {
                 itemId: 'item2',
                 productName: 'Jeans',
                 quantity: 1,
-                price: 30.0,
+                price: 450.0,
             },
         ]},
         {
             orderId: '3',
-            customerName: 'hkj',
+            customerName: 'Muhammad Kamran Ali',
             customerAddress: 'abc area block 2, Karachi',
             customerContact: '123-456-7890',
             items: [
@@ -55,13 +55,13 @@ function OrderDetails ({ route }) {
                 itemId: 'item1',
                 productName: 'T-shirt',
                 quantity: 2,
-                price: 20.0,
+                price: 200.0,
             },
             {
                 itemId: 'item2',
                 productName: 'Jeans',
                 quantity: 1,
-                price: 30.0,
+                price: 100.0,
             },
         ]},
         
@@ -76,21 +76,21 @@ function OrderDetails ({ route }) {
         {order.map((order, index) => (
         <View key={index} style={styles.card}>
             <View style={{ marginLeft: '90%'}}>
-                <FontAwesome name='check-circle-o' size={23} color='green' />
+                {/* <FontAwesome name='check-circle-o' size={20} color='green' /> */}
             </View>
             <View style={styles.customerInfo}>
-                <Text>Name: {order.customerName}</Text>
-                <Text>Email: {order.customerAddress}</Text>
-                <Text>Contact: {order.customerContact}</Text>
+                <Text style={{fontSize: 18, color: '#222'}}> {order.customerName}</Text>
+                <Text> {order.customerContact}</Text>
+                <Text style={{ color: '#9579E3'}}> {order.customerAddress}</Text>
             </View>
             <View style={styles.orderItems}>
-                <Text style={styles.sectionTitle}>Order Items:</Text>
+                <Text style={styles.sectionTitle}>Order Items</Text>
                 {order.items.map((item, index) => (
                     
                     <View key={index} style={styles.item}>
                         <Text>{item.productName}</Text>
-                        <Text>Quantity: {item.quantity}</Text>
-                        <Text>Price: ${item.price}</Text>
+                        <Text> {item.quantity}</Text>
+                        <Text style={{ color: '#111', fontWeight: 500, fontSize: 16}}>Rs. {item.price}</Text>
                     </View>
                        
                 ))}
@@ -106,20 +106,21 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
-    color: '#222',
+    color: '#333',
     marginHorizontal: 10
   },
   card: {
     alignItem: 'center',
+    justifyContent:'center',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 3,
     padding: 20,
-    margin: 3,
+    margin: 5,
     backgroundColor: '#FCFAFA',
     width: '100%',
     height: 200
@@ -127,7 +128,9 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: '500',
+    color: '#222',
     marginVertical: 5,
+    padding: 5
   },
   customerInfo: {
     marginVertical: 0,

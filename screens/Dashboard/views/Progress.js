@@ -22,19 +22,19 @@ function Progress () {
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 5, marginHorizontal: 50}}>
         <View style={styles.card}>
           <View style={{ margin: 5, alignItem: 'center'}}>
-            <FontAwesome name='dollar' size={23} color="#555" />
+            <FontAwesome name='dollar' size={21} color="#444" />
           </View>
           <View style={{ flexDirection: 'col', justifyContent: 'center', alignItem: 'center', marginLeft: 8 , width: '80%'}}>
-            <Text style={{ fontSize: 14, color: '#888'}}>earning</Text>
+            <Text style={{ fontSize: 13, color: '#666'}}>earning</Text>
             <Text style={styles.data}>PKR 23687</Text>
           </View>
         </View>
         <View style={styles.card}>
           <View style={{ margin: 5}}>
-            <FontAwesome name='dollar' size={23} color="#555" />
+            <FontAwesome name='dollar' size={21} color="#444" />
           </View>
           <View style={{ flexDirection: 'col', justifyContent: 'center', alignItem: 'center', marginLeft: 8 , width: '80%'}}>
-            <Text style={{ fontSize: 14, color: '#888'}}>revenue</Text>
+            <Text style={{ fontSize: 13, color: '#666'}}>revenue</Text>
             <Text style={styles.data}>PKR 4200</Text>
           </View>
         </View>
@@ -76,9 +76,9 @@ function Progress () {
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
-    color: '#222',
+    color: '#333',
     marginVertical: 5
   },
   card: {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   data: {
     fontSize: 16, 
     color: '#9579E3', 
-    fontWeight: '500', 
+    fontWeight: '400', 
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
