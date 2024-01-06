@@ -62,7 +62,7 @@ function  Measurements ({ navigation }) {
       </View>
       
       <View  style={ styles.section }>
-       <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Ladies</Text>
+       <Text style={{  fontSize: 15, fontWeight: '500', marginVertical: 15 }}>Ladies</Text>
         {garmentTypes.map((garmentType, index) => (
           <View key={index}>
             <Checkbox.Item
@@ -87,7 +87,7 @@ function  Measurements ({ navigation }) {
       </View>
       
       <View  style={ styles.section }>
-        <Text style={{  fontSize: 16, fontWeight: 500, marginVertical: 15 }}>Measurements</Text>
+        <Text style={{  fontSize: 15, fontWeight: '500', marginVertical: 15 }}>Measurements</Text>
         <TextInput
           style={styles.scale}
           label="length"
@@ -144,22 +144,23 @@ function  Measurements ({ navigation }) {
           underlineColor='#9999'
           activeUnderlineColor='#B7A8DF'
         />
-      </View>
 
-      { Object.values(garmentStatus).includes(true) ? (
+        { Object.values(garmentStatus).includes(true) ? (
           <TouchableOpacity
             style={styles.button}
             onPress={handleOrderSummary}
           >
             <Text style={styles.buttonText}>continue</Text>
           </TouchableOpacity>
-        ) : (
+          ) : (
           <TouchableOpacity
             style={[styles.button, { backgroundColor: '#E0DEDE'}]}
           >
             <Text style={styles.buttonText}>continue</Text>
           </TouchableOpacity>
-      )}
+          )
+        }
+      </View>
     </ScrollView>
   );
 };
@@ -202,9 +203,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 50,
-    paddingLeft: 50,
-    borderRadius: 50,
+    paddingRight: 45,
+    paddingLeft: 45,
+    borderRadius: 10,
     backgroundColor: '#9579E3',
     margin: 10,
     justifyContent: 'center',
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 18,
+    fontSize: 16,
   }
 });
 

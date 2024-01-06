@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9579E3',
   },
   toggleButtonText: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#777'
   },
   activeToggleButtonText: {

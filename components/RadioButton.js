@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     padding: 15,
     paddingRight: 50,
     paddingLeft: 50,
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 1,
     margin: 8,
     justifyContent: 'center',
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   radioText: {
     fontWeight: '500',
-    fontSize: 16,
+    fontSize: 14,
     color: '#ffff',
   }
 });

@@ -204,9 +204,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 50,
-    paddingLeft: 50,
-    borderRadius: 20,
+    paddingRight: 45,
+    paddingLeft: 45,
+    borderRadius: 10,
     backgroundColor: '#9579E3',
     margin: 30,
     justifyContent: 'center',
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 14,
   }
 });
 

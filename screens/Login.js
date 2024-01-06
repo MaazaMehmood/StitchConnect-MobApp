@@ -83,7 +83,7 @@ function Login ({ login ,  navigation }) {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={handleSignup} >  
-              <Text style={styles.signup}>Don't have an account? Sign up</Text>
+              <Text style={styles.login}>Don't have an account? Sign up</Text>
           </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
@@ -123,9 +123,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 50,
-    paddingLeft: 50,
-    borderRadius: 20,
+    paddingRight: 45,
+    paddingLeft: 45,
+    borderRadius: 10,
     backgroundColor: '#9579E3',
     marginTop: 30,
     justifyContent: 'center',
@@ -134,9 +134,9 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '500',
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 14,
   },
-  signup: {
+  login: {
     color: '#9579E3',
     textDecorationLine: 'underline',
     fontSize: 14,

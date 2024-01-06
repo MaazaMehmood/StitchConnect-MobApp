@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
     paddingLeft: 55,
     shadowRadius: 0,
     shadowOpacity: 0,
-    borderRadius: 50,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#ffff',
     backgroundColor: 'transparent',
   },
   buttonText: {
     color: '#ffff',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });

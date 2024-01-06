@@ -9,12 +9,17 @@ const { width, height } = Dimensions.get("screen");
 
 function Order ({ navigation , route }) {
 
-  const { garmentStatus, garmentDetails, measurements } = route.params;
+  const [customerData, setCustomerData] = useState({});
 
+  const { garmentStatus, garmentDetails, measurements } = route.params;
   const [activeSection, setActiveSection] = useState('summary');
 
   const toggleSection = (section) => {
     setActiveSection(section);
+  };
+
+  const handleCustomerData = (data) => {
+    setCustomerData(data);
   };
 
   return (
@@ -42,21 +47,12 @@ function Order ({ navigation , route }) {
             
             {activeSection === 'summary' && (
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <OrderSummary  garmentStatus={garmentStatus} garmentDetails={garmentDetails} measurements={measurements}/>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
-                        <TouchableOpacity
-                            style={[styles.button, {marginLeft: '70%', backgroundColor: '#B7A8DF',}]}
-                            onPress={() => toggleSection('billing')}
-                        >
-                            <Text style={styles.buttonText}>next</Text>
-                        </TouchableOpacity>
-                    </View>
-                    
+                    <OrderSummary  garmentStatus={garmentStatus} garmentDetails={garmentDetails} measurements={measurements} handleCustomerData ={handleCustomerData } toggleSection={toggleSection} /> 
                 </ScrollView>
             )}
             {activeSection === 'billing' && (
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <BillingDetails />
+                    <BillingDetails customerData={customerData} />
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
                         <TouchableOpacity
                             style={[styles.button, { backgroundColor: '#F9F8FC'}]}
@@ -65,7 +61,7 @@ function Order ({ navigation , route }) {
                             <Text style={[styles.buttonText, { color: '#9999'}]}>back</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style={[styles.button, { backgroundColor: '#B7A8DF'}]}
+                            style={[styles.button, { backgroundColor: '#9579E3'}]}
                             // onPress={}
                         >
                             <Text style={styles.buttonText}>confirm</Text>
@@ -119,10 +115,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     alignItems: 'center',
-    fontWeight: 'light',
     color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 500
+    fontSize: 14,
+    fontWeight: '500',
 
   },
 });

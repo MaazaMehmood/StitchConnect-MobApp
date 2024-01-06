@@ -8,11 +8,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 const { width, height } = Dimensions.get("screen");
 
 
-function BillingDetails () {
+function BillingDetails ({ customerData }) {
   
   //Billing details
-  const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
+  const {contact, name} = customerData;
+  console.log(customerData);
 
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
@@ -85,31 +85,13 @@ function BillingDetails () {
       
       {/* billing details */}
       <View style={styles.section}>
-        <Text style={styles.title}> Contact Detail </Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
+        <View style={{ flexDirection: 'row', justifyContent: 'left', padding: 3}}>
           <CustomIcon iconName='person-circle-sharp' color='#9579E3' />
-          <TextInput
-            style={styles.input}
-            label="Name"
-            value={name}
-            onChangeText={text => setName(text)}
-            mode='underlined'
-            underlineColor='#CBC5DC'
-            activeUnderlineColor='#B7A8DF'
-          />
+          <Text style={{ color: '#9579E3', fontSize: 26, fontWeight: '300', bottom: '2%'}}> {name} </Text>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 3}}>
-          <FontAwesome name="phone" size={22} color="#9579E3" />   
-          <TextInput
-              style={styles.input}
-              label="Contact"
-              value={contact}
-              keyboardType='numeric'
-              onChangeText={text => setContact(text)}
-              mode='underlined'
-              underlineColor='#CBC5DC'
-              activeUnderlineColor='#B7A8DF'
-          />
+        <View style={{ flexDirection: 'row', justifyContent: 'left'}}>
+          <FontAwesome name="phone" size={22} color="#9579E3" />
+          <Text style={{ color: '#777', fontSize: 15 , fontWeight: '300', left: '40%'}}> {contact} </Text>
         </View>
       </View>
       
@@ -198,6 +180,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#FCFAFA',
+    padding : 2
   },
   section: {
     backgroundColor: '#ffffff',
@@ -211,9 +194,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '500', 
-    marginVertical: 8, 
+    marginVertical: 5, 
     padding: 3,
   },
   radioOption: {
@@ -241,9 +224,9 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    paddingRight: 50,
-    paddingLeft: 50,
-    borderRadius: 20,
+    paddingRight: 45,
+    paddingLeft: 45,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#9579E3',
@@ -252,7 +235,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#ffff',
     fontWeight: '500',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 

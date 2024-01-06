@@ -76,7 +76,7 @@ function Progress () {
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '500',
     color: '#333',
     marginVertical: 5
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: '70%',
   },
   data: {
-    fontSize: 16, 
+    fontSize: 15, 
     color: '#9579E3', 
     fontWeight: '400', 
     flexDirection: 'row',

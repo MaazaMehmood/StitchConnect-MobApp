@@ -14,14 +14,16 @@ import Portfolio from '../screens/Portfolio';
 import {Settings} from '../screens/Settings';
 import {Favorites} from '../screens/Favorites';
 import Dashboard from '../screens/Dashboard/Dashboard';
-
+import { TailorNotification } from '../screens/notifications/TailorNotification';
+import { CustomerNotification } from '../screens/notifications/CustomerNotification';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = ({ navigation, user, logout}) => {
 
   const handleNotifications = () => {
-    navigation.navigate('Notifications')
+    { user.userType === "business"? navigation.navigate('Business Notification') : navigation.navigate('Notifications') 
+    }
   }
 
 
@@ -52,7 +54,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             drawerIcon: ({ focused }) =>  {
               const activeColor = focused ? 'white' : 'indigo';
               return <CustomIcon iconName="home-outline" color={activeColor} />}
-            })}
+          })}
         />
         <Drawer.Screen name="Profile" component={UserProfile}  
           options={{ drawerIcon: ({ focused }) => {
@@ -64,7 +66,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
           <>
             <Drawer.Screen name="Dashboard" component={Dashboard} 
               options={{ drawerIcon: ({ focused }) => {
-                const activeColor = focused ? 'white' : '#2ecc71';
+                const activeColor = focused ? 'white' : '#22CCDD';
                 return <MaterialCommunityIcons name="view-dashboard-outline" size={22} color={activeColor} />
               },
               headerShown: false
@@ -73,20 +75,36 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             <Drawer.Screen name="Portfolio" component={Portfolio} 
               options={{
               drawerIcon: ({ focused }) => {
-                const activeColor = focused ? 'white' : '#22CCDD';
+                const activeColor = focused ? 'white' : '#9F4BC5';
                 return <AntDesign name="profile" size={23} color={activeColor} />
               },  headerShown: false }}
+            />
+            <Drawer.Screen name="Business Notification" component={TailorNotification} 
+              options={{ drawerIcon: ({ focused }) => {
+                const activeColor = focused ? 'white' : '#2ecc71';
+                return <CustomIcon iconName="notifications-outline" color={activeColor} />
+              },
+            }} 
             />
           </>
         )}
         { user.userType === "customer" && (
-          <Drawer.Screen name="Favorites" component={Favorites} 
-            options={{
-              drawerIcon: ({ focused }) => {
-              const activeColor = focused ? 'white' : 'navy';
-              return <CustomIcon iconName="heart-outline" color={activeColor} />
-            }}} 
-          />
+          <>
+            <Drawer.Screen name="Favorites" component={Favorites} 
+              options={{
+                drawerIcon: ({ focused }) => {
+                const activeColor = focused ? 'white' : '#9F4BC5';
+                return <CustomIcon iconName="heart-outline" color={activeColor} />
+              }}} 
+            />
+            <Drawer.Screen name="Notifications" component={CustomerNotification} 
+                options={{ drawerIcon: ({ focused }) => {
+                  const activeColor = focused ? 'white' : '#2ecc71';
+                  return <CustomIcon iconName="notifications-outline" color={activeColor} />
+                },
+              }} 
+            />
+            </>
         )}
         <Drawer.Screen name="Settings" component={Settings} 
           options={{ drawerIcon: ({ focused }) => {

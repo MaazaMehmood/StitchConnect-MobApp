@@ -16,13 +16,15 @@ import {Home} from './screens/Home';
 import UserProfile from './screens/UserProfile';
 import Dashboard from './screens/Dashboard/Dashboard';
 import Portfolio from './screens/Portfolio';
-import {Notifications} from './screens/Notifications';
 import {Settings} from './screens/Settings';
 import {Favorites} from './screens/Favorites';
 import DrawerNavigator from './components/DrawerNavigator';
 import {Search} from './screens/Search';
 import {Measurements} from './screens/order/Measurements';
 import {Order} from './screens/order/Order';
+import { TailorNotification } from './screens/notifications/TailorNotification';
+import { CustomerNotification } from './screens/notifications/CustomerNotification';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -49,7 +51,8 @@ function App() {
             <Stack.Screen name="Order" component={ Order }  options={{ headerShadowVisible: false, headerTitle: 'My Order'}} />
             <Stack.Screen name="Favorites" component={ Favorites } options={{headerShown: false}} />
             <Stack.Screen name="Settings" component={ Settings } options={{headerShown: false}} />
-            <Stack.Screen name="Notifications" component={ Notifications } options={{headerShown: false}} />
+            <Stack.Screen name="Business Notifications" component={ TailorNotification } options={{headerShown: false}} />
+            <Stack.Screen name="Notifications" component={ CustomerNotification } options={{headerShown: false}} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
