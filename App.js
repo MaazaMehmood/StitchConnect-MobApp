@@ -17,6 +17,8 @@ import UserProfile from './screens/UserProfile';
 import Dashboard from './screens/Dashboard/Dashboard';
 import Portfolio from './screens/Portfolio';
 import {Settings} from './screens/Settings';
+import { About } from './screens/About';
+import { UserAgreement } from './screens/UserAgreement';
 import {Favorites} from './screens/Favorites';
 import DrawerNavigator from './components/DrawerNavigator';
 import {Search} from './screens/Search';
@@ -50,9 +52,13 @@ function App() {
             <Stack.Screen name="Measurements" component={ Measurements } />
             <Stack.Screen name="Order" component={ Order }  options={{ headerShadowVisible: false, headerTitle: 'My Order'}} />
             <Stack.Screen name="Favorites" component={ Favorites } options={{headerShown: false}} />
+            
             <Stack.Screen name="Settings" component={ Settings } options={{headerShown: false}} />
+            <Stack.Screen name="About" component={ About } />
+            <Stack.Screen name="Agreement" component={ UserAgreement } />
+            
             <Stack.Screen name="Business Notifications" component={ TailorNotification } options={{headerShown: false}} />
-            <Stack.Screen name="Notifications" component={ CustomerNotification } options={{headerShown: false}} />
+            <Stack.Screen name="Notifications" component={ CustomerNotification } />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

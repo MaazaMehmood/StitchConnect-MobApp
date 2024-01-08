@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
 
 
@@ -9,9 +9,10 @@ function CustomerNotification () {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>You have 2 new notifications today</Text>
         <View>
-            <Text style={{fontSize: 18, fontWeight: '500', margin: 5, color: '#333'}}>Today</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold', margin: 5, color: '#333'}}>Today</Text>
             <View style={styles.section}>
-                <List.Section>
+                <TouchableOpacity>
+                  <List.Section>
                     <List.Subheader style={styles.subheader}>Order Updates</List.Subheader>
                     <List.Item
                         title="Order Confirmed"
@@ -20,24 +21,27 @@ function CustomerNotification () {
                         descriptionStyle={styles.itemDescription}
                     />
                     {/* Add more order update related notifications */}
-                </List.Section>
+                  </List.Section>
+                </TouchableOpacity>
 
                 <Divider />
-
-                <List.Section>
-                    <List.Subheader style={styles.subheader}>Delivery Notifications</List.Subheader>
-                    <List.Item
-                        title="Order Out for Delivery"
-                        description="Your order is out for delivery."
-                        titleStyle={styles.itemTitle}
-                        descriptionStyle={styles.itemDescription}
-                    />
-                    {/* Add more delivery related notifications */}
-                </List.Section>
+                <TouchableOpacity>
+                  <List.Section>
+                      <List.Subheader style={styles.subheader}>Delivery Notifications</List.Subheader>
+                      <List.Item
+                          title="Order Out for Delivery"
+                          description="Your order is out for delivery."
+                          titleStyle={styles.itemTitle}
+                          descriptionStyle={styles.itemDescription}
+                      />
+                      {/* Add more delivery related notifications */}
+                  </List.Section>
+                </TouchableOpacity>
             </View>
             
-            <Text style={{fontSize: 18, fontWeight: '500', margin: 5, color: '#333'}}>This Week</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold', margin: 5, color: '#333'}}>This Week</Text>
             <View style={styles.section}>
+              <TouchableOpacity>
                 <List.Section>
                     <List.Subheader style={styles.subheader}>Tailor Updates</List.Subheader>
                     <List.Item
@@ -48,28 +52,32 @@ function CustomerNotification () {
                     />
                     {/* Add more tailor update related notifications */}
                 </List.Section>
+              </TouchableOpacity>
 
-                <Divider />
+              <Divider />
 
+              <TouchableOpacity>
                 <List.Section>
-                    <List.Subheader style={styles.subheader}>Special Offers/Promotions</List.Subheader>
-                    <List.Item
-                        title="Exclusive 20% Discount on Tailoring Services"
-                        description="Avail of a 20% discount on your next order."
-                        titleStyle={styles.itemTitle}
-                        descriptionStyle={styles.itemDescription}
-                    />
-                    <List.Item
-                        title="Offering 30% off on First Order"
-                        description="your next order now!."
-                        titleStyle={styles.itemTitle}
-                        descriptionStyle={styles.itemDescription}
-                    />
-                    {/* Add more special offers/promotions related notifications */}
+                  <List.Subheader style={styles.subheader}>Special Offers/Promotions</List.Subheader>
+                  <List.Item
+                      title="Exclusive 20% Discount on Tailoring Services"
+                      description="Avail of a 20% discount on your next order."
+                      titleStyle={styles.itemTitle}
+                      descriptionStyle={styles.itemDescription}
+                  />
+                  <List.Item
+                      title="Offering 30% off on First Order"
+                      description="your next order now!."
+                      titleStyle={styles.itemTitle}
+                      descriptionStyle={styles.itemDescription}
+                  />
+                  {/* Add more special offers/promotions related notifications */}
                 </List.Section>
+              </TouchableOpacity>
 
-                <Divider />
-
+              <Divider />
+              
+              <TouchableOpacity>
                 <List.Section>
                 <List.Subheader style={styles.subheader}>Feedback Requests</List.Subheader>
                 <List.Item
@@ -80,6 +88,7 @@ function CustomerNotification () {
                 />
                 {/* Add more feedback request related notifications */}
                 </List.Section>
+              </TouchableOpacity>
             </View>
         </View>
     </ScrollView>
@@ -108,12 +117,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 3,
-    borderRadius: 10
+    borderRadius: 10,
+    borderColor: '#E5DCFF',
+    borderWidth: 1,
   },
   subheader: {
     fontSize: 15,
     fontWeight: '700',
-    marginBottom: 3,
     color: '#555555',
   },
   itemTitle: {

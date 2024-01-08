@@ -24,7 +24,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
   const handleNotifications = () => {
     { user.userType === "business"? navigation.navigate('Business Notification') : navigation.navigate('Notifications') 
     }
-  }
+  };
 
 
     return (

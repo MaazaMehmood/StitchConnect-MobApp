@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Switch, ScrollView, StyleSheet } from 'react-native';
 import {CustomIcon} from '../components/CustomIcon';
 
 
 function Settings ({ navigation }) {
 
-  const handleNotificationToggle = (value) => {
-    //notification toggle logic here
+  const[value, setValue] = useState(false);
+
+  const handleNotificationToggle = () => {
+    setValue(previousState => !previousState);
   };
 
   const handleProfileEditing = () => {
-    navigation.navigate('Profile')
+    navigation.navigate('Profile');
   };
+
+  const handleAbout = () => { 
+    navigation.navigate('About')
+  }
+
+  const handleAgreement = () => { 
+    navigation.navigate('Agreement')
+  }
 
   return (
     <View style={styles.container}>
@@ -19,18 +29,18 @@ function Settings ({ navigation }) {
 
         <Text style={styles.heading}>Notifications Settings</Text>
 
-        <TouchableOpacity style={styles.option}>
+        <View style={styles.option}>
           <Text style={styles.optionText}>Receive Notifications</Text>
           <Switch
-            value={true} // Set the initial value based on user preference
+            value={value} // Set the initial value based on user preferences
             onValueChange={handleNotificationToggle}
             trackColor={{
               false: '#767577', // Color when switch is off
               true: '#C5B8E7',  // Color when switch is on
             }}
-            thumbColor={'#9579E3'}
+            thumbColor={value ? '#9579E3' : '#f4f3f4'}
           />
-        </TouchableOpacity>
+        </View>
 
         <Text style={styles.heading}>Payment Settings</Text>
 
@@ -47,16 +57,15 @@ function Settings ({ navigation }) {
         </TouchableOpacity>
 
         <Text style={styles.heading}>Privacy Settings</Text>
-
-        <TouchableOpacity style={styles.option}>
-          <Text style={styles.optionText}>User Agreement</Text>
-          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
-        </TouchableOpacity>
         <TouchableOpacity style={styles.option}>
           <Text style={styles.optionText}>Privacy</Text>
           <CustomIcon  iconName='chevron-forward-outline' color='#999' />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
+        <TouchableOpacity style={styles.option}  onPress={ handleAgreement }>
+          <Text style={styles.optionText}>User Agreement</Text>
+          <CustomIcon  iconName='chevron-forward-outline' color='#999' />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option} onPress={ handleAbout }>
           <Text style={styles.optionText}>About </Text>
           <CustomIcon  iconName='chevron-forward-outline' color='#999' />
         </TouchableOpacity>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
 
 
@@ -9,8 +9,9 @@ function TailorNotification () {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>You have 1 new notifications today</Text>
         <View>
-            <Text style={{fontSize: 18, fontWeight: '500', margin: 5, color: '#333'}}>Today</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold', margin: 5, color: '#333'}}>Today</Text>
             <View style={styles.section}>
+              <TouchableOpacity>
                 <List.Section>
                     <List.Subheader style={styles.subheader}>Order Requests</List.Subheader>
                     <List.Item
@@ -21,20 +22,27 @@ function TailorNotification () {
                     />
                     {/* Add more order update related notifications */}
                 </List.Section>
+              </TouchableOpacity> 
             </View>
             
-            <Text style={{fontSize: 18, fontWeight: '500', margin: 5, color: '#333'}}>This Week</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold', margin: 5, color: '#333'}}>This Week</Text>
             <View style={styles.section}>
+              <TouchableOpacity>
                 <List.Section>
-                    <List.Subheader style={styles.subheader}>Order Updates</List.Subheader>
-                    <List.Item
-                        title="Order Status Update"
-                        description="Your order is now being processed by the tailor."
-                        titleStyle={styles.itemTitle}
-                        descriptionStyle={styles.itemDescription}
-                    />
-                    {/* Add more delivery related notifications */}
+                  <List.Subheader style={styles.subheader}>Order Updates</List.Subheader>
+                  <List.Item
+                      title="Order Status Update"
+                      description="Your order is now being processed by the tailor."
+                      titleStyle={styles.itemTitle}
+                      descriptionStyle={styles.itemDescription}
+                  />
+                  {/* Add more delivery related notifications */}
                 </List.Section>
+              </TouchableOpacity>
+
+              <Divider />
+
+              <TouchableOpacity>  
                 <List.Section>
                     <List.Subheader style={styles.subheader}>Customer Requests</List.Subheader>
                     <List.Item
@@ -45,9 +53,11 @@ function TailorNotification () {
                     />
                     {/* Add more tailor update related notifications */}
                 </List.Section>
+              </TouchableOpacity>
 
                 <Divider />
 
+              < TouchableOpacity>
                 <List.Section>
                     <List.Subheader style={styles.subheader}>Design Updates</List.Subheader>
                     <List.Item
@@ -64,6 +74,7 @@ function TailorNotification () {
                     />
                     {/* Add more special offers/promotions related notifications */}
                 </List.Section>
+              </TouchableOpacity>
             </View>
         </View>
     </ScrollView>
@@ -92,12 +103,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2,
         elevation: 3,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: '#E5DCFF',
+        borderWidth: 1,
       },
       subheader: {
         fontSize: 15,
         fontWeight: '700',
-        marginBottom: 3,
         color: '#555555',
       },
       itemTitle: {

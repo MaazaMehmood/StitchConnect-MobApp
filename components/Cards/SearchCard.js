@@ -12,9 +12,9 @@ const SearchCard = ({ navigation, searchData }) => {
         <FlatList
           data={searchData}
           keyExtractor={(item) => item.id}
-          renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={160} /> } 
+          renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={350} /> } 
           showsVerticalScrollIndicator={false}
-          horizontal
+          
         />
       </View>
 

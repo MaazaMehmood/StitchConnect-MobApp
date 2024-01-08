@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import { TextInput, RadioButton, Checkbox } from 'react-native-paper';
+import { TextInput, RadioButton, Checkbox, Button } from 'react-native-paper';
 
 
-function Signup ({ route }) {
+function Signup ({ navigation, route }) {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -19,6 +19,7 @@ function Signup ({ route }) {
   const [type, setType] = useState('');
   const [style, setStyle] = useState('');
 
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleSignup = () => {
     
@@ -29,6 +30,13 @@ function Signup ({ route }) {
     
   };
 
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleAgreement = () => {
+    navigation.navigate('Agreement')
+  }
   return (
        
     <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
@@ -144,9 +152,22 @@ function Signup ({ route }) {
             )}
           </View>
 
+          <View style={{ flexDirection: 'row', justifyContent: 'left', alignItems: 'center'}}>
+            <Checkbox.Item
+            status={isChecked ? 'checked' : 'unchecked'}
+            onPress={handleCheck}
+            />
+            <View>
+              <Text >I have read and agree to the</Text>
+              <TouchableOpacity onPress={handleAgreement}><Text style={{ color: '#4F88D8'}}>terms of service</Text></TouchableOpacity>
+            </View>
+          </View>
+          
+
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button,  { backgroundColor: isChecked  ? '#9579E3' : '#DED7EA' } ]}
             onPress={handleSignup}
+            disabled={!isChecked}
           >
             <Text style={styles.buttonText}>Sign up</Text>
           </TouchableOpacity>
@@ -172,7 +193,7 @@ const styles = StyleSheet.create({
     position: "relative",
     padding: 8,
     marginHorizontal: 8,
-    marginVertical: 40,
+    marginVertical: 20,
     borderRadius: 10,
     backgroundColor: "#ffff",
     shadowColor: "black",

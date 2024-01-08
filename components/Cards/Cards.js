@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     // elevation: 3,
     margin: 5,
     padding: 3,
-    height: 230
+  
   },
   image: {
     position: 'absolute',
