@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    width: 190
   },
   radioText: {
     fontWeight: '500',

@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground, StyleSheet, Dimensions } from 'react-native';
-import { Divider } from 'react-native-paper';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+  StyleSheet,
+  Dimensions,
+  Modal,
+  Button,
+} from 'react-native';
+import { Divider, TextInput, } from 'react-native-paper';
 import {CustomIcon} from '../components/CustomIcon';
 import { connect } from 'react-redux';
 
@@ -12,6 +23,9 @@ const thumbMeasure = (width - 48 - 32) / 3;
 function Portfolio  ({ navigation, user }) {
 
   const[icon, setIcon]= useState('heart-outline');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [price, setPrice] = useState('250');
 
   const handleFavorites= () => {
     setIcon(icon === 'heart'? 'heart-outline' : 'heart');
@@ -25,6 +39,17 @@ function Portfolio  ({ navigation, user }) {
   const handleOrder = () => {
     navigation.navigate('Measurements')
   }
+
+  const handleImageClick = () => {
+    setSelectedImage('');
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    // Implement logic to set the price for the selected image
+    // You can update your data structure or state accordingly
+    setModalVisible(false);
+  };
   
   return (
     <View style={styles.profile}>
@@ -111,54 +136,99 @@ function Portfolio  ({ navigation, user }) {
                 )}
               </View>
               <View style={{ paddingBottom: 20, margin: 10 }}>
+                {/* <Text style={styles.noImgText}>Add your images</Text> */}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                   {/* {Images.Viewed.map((img, imgIndex) => ( */}
-                    <Image
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity>  
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity> 
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity> 
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity> 
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity> 
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
-                    <Image
+                      />
+                    </TouchableOpacity> 
+                    <TouchableOpacity onPress={() => handleImageClick()}>
+                      <Image
                       source={require('../assets/images/style(1).jpg')}
                       // key={`viewed-${img}`}
                       resizeMode="cover"
                       style={styles.thumb}
-                    />
+                      />
+                    </TouchableOpacity> 
 
                   {/* ))} */}
                 </View>
               </View>
+              {/* Modal for setting the price */}
+                <Modal animationType="slide" transparent={true} visible={modalVisible}>
+                <TouchableOpacity style={styles.closeButton} onPress={handleCloseModal}>
+                  <CustomIcon iconName="close-circle-outline" color="#333" size={20} />
+                </TouchableOpacity>
+                  <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                      <Image source={require('../assets/images/style(1).jpg')} resizeMode="cover" style={styles.modalImage} />
+                      { user.userType === "customer" && (<Text>Rs. {price}</Text>)}
+                      { user.userType === "business" && (
+                        <>
+                          <TextInput
+                            style={styles.priceInput}
+                            keyboardType="numeric"
+                            placeholder="set price"
+                            value={price}
+                            onChangeText={(text) => setPrice(text)}
+                            activeUnderlineColor='#9579E3'
+                          />
+                          <TouchableOpacity 
+                            style={styles.button}
+                            // onPress={() => setPrice(value)} 
+                            >  
+                              <Text style={{ fontSize: 13, fontWeight: '500', color: '#9579E3'}}>set price</Text>
+                          </TouchableOpacity>
+                      </>
+                      )}
+                    </View>
+                  </View>
+                </Modal>
             </View>
 
           </ScrollView>
@@ -237,12 +307,46 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 35
   },
+  noImgText: {
+    textAlign: 'center',
+    color: '#999999'
+  },
   thumb: {
     borderRadius: 4,
     marginVertical: 4,
     alignSelf: "center",
     width: thumbMeasure,
     height: thumbMeasure
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: 280,
+    backgroundColor: '#fff',
+    padding: 5,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalImage: {
+    width: 250,
+    height: 250,
+    borderRadius: 5,
+    marginBottom: 5,
+  },
+  priceInput: {
+    alignItems: 'center',
+    width: '80%',
+    color: '#777',
+    backgroundColor: 'transparent',
+    fontSize:  14,
+  },
+  closeButton: {
+    position: 'relative',
+    top: 10,
+    right: 10,
   }
 });
 

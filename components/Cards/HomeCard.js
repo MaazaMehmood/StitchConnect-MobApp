@@ -12,7 +12,7 @@ const HomeCard = ({ navigation, data }) => {
         contentContainerStyle={styles.cardContainer}
         showsVerticalScrollIndicator={false}>
 
-          <View style={styles.card} >
+          <View style={styles.card}>
             <Text style={styles.category} >Popular</Text>
             <View style={styles.horizontalScrollContainer}> 
               <FlatList
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'scroll', // Enable horizontal scrolling
+    height: 250,
   }
 
 });

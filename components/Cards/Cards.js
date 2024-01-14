@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 
-const Cards = ({ navigation, tailor, width }) => {
+const Cards = ({ navigation, tailor, width , height}) => {
 
   const handlePortfolio = () => {
     navigation.navigate('Portfolio');
@@ -10,7 +10,7 @@ const Cards = ({ navigation, tailor, width }) => {
 
   return (
     <TouchableOpacity onPress={handlePortfolio}>
-    <View style={[styles.card, {width: width}]}>
+    <View style={[styles.card, {width: width, height: height}]}>
       <Image source={require('../../assets/images/image.jpg')} style={styles.image} />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5}} >
         <View style={styles.textContainer}>
@@ -38,12 +38,11 @@ const styles = StyleSheet.create({
     // elevation: 3,
     margin: 5,
     padding: 3,
-  
   },
   image: {
     position: 'absolute',
     width: '100%',
-    height: '60%',
+    height: '50%',
     borderRadius: 5,
   },
   textContainer: {
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'left',
     padding: 3,
-    marginTop: '55%',
+    marginTop: '50%',
     width: '100%',
     overflow: 'hidden'
   },

@@ -3,14 +3,19 @@ import { View, Text,TouchableOpacity, Image, StyleSheet } from 'react-native';
 import {RadioButton} from '../components/RadioButton';
 
 
+
 function Account ({ navigation }) {
+
  
-  const [accountType, setSAccountType] = useState('Customer Account');
-  const accountOptions = ['Customer Account', 'Business Account'];
+  const [accountType, setSAccountType] = useState('customer');
+  const accountOptions = ['customer', 'tailor'];
+
 
   const handleAccountChange = (option) => {
+
     setSAccountType(option);
-     navigation.navigate('Signup',  { accountType: option });
+    navigation.navigate('Signup',  { accountType: option });
+
   };
 
   const handleLogin = () => {

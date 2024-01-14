@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import { TextInput, RadioButton, Checkbox, Button } from 'react-native-paper';
+import { TextInput, RadioButton, Checkbox } from 'react-native-paper';
+import axios from 'axios';
 
+
+
+const signupEndpoint = 'http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/auth/signUp';
 
 function Signup ({ navigation, route }) {
 
@@ -21,13 +25,40 @@ function Signup ({ navigation, route }) {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleSignup = () => {
+  const handleSignup = async() => {
     
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Account Type:', accountType);
-    // send the data to server for registration 
-    
+    console.log('Sending signup request with data:', {
+      firstname: firstName,
+      email,
+      password,
+      role: accountType,
+      lastname: lastName,
+      contactno: contact,
+      gender,
+    });
+    // send the data to server for registration
+
+    try{
+
+      await axios.post(signupEndpoint, {
+        firstname: firstName,
+        email,
+        password,
+        role: accountType,
+        lastname: lastName,
+        contacno: contact,
+        gender,        
+      }).then((res)=>{
+        console.log('Signup successfull')
+        console.log(res.data)
+      });
+
+      navigation.navigate('Login');
+
+    } catch (error) {
+
+      console.error('Signup failed:', error?.message);
+    }
   };
 
   const handleCheck = () => {
@@ -103,11 +134,11 @@ function Signup ({ navigation, route }) {
             <RadioButton.Group onValueChange={newValue => setGender(newValue)} value={gender}  >
               <Text style={{ margin: 3}} ></Text>
               <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
-                <RadioButton value="Male" />
+                <RadioButton value="male" />
                 <Text style={{color: '#444'}}>Male</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center', marginBottom: 8}} >
-                <RadioButton value="Female" />
+                <RadioButton value="female" />
                 <Text style={{color: '#444'}}>Female</Text>
               </View>
             </RadioButton.Group>

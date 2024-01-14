@@ -39,7 +39,7 @@ function Dashboard ({ navigation, user }) {
           </TouchableOpacity>
         </View>
         
-        <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginTop: 5}}>
+        <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginVertical: 5}}>
           <Text style={styles.userName}>{user.name}</Text>
         </View>
       </ImageBackground>

@@ -11,10 +11,10 @@ const SearchCard = ({ navigation, searchData }) => {
       <View style={styles.cardContainer}>  
         <FlatList
           data={searchData}
-          keyExtractor={(item) => item.id}
-          renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={350} /> } 
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={ ({ item }) =>  <Cards navigation={navigation} tailor={item} width={170} height={170}/> } 
           showsVerticalScrollIndicator={false}
-          
+          numColumns={2}
         />
       </View>
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     alignItems: 'center',
-    marginVertical: 10
+    marginVertical: 10,
   },
 
 });
