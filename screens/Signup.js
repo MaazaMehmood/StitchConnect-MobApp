@@ -26,8 +26,7 @@ function Signup ({ navigation, route }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleSignup = async() => {
-    
-    console.log('Sending signup request with data:', {
+    const bodyData = {
       firstname: firstName,
       email,
       password,
@@ -35,20 +34,13 @@ function Signup ({ navigation, route }) {
       lastname: lastName,
       contactno: contact,
       gender,
-    });
+    }
+    console.log('Sending signup request with data:', bodyData);
     // send the data to server for registration
 
     try{
 
-      await axios.post(signupEndpoint, {
-        firstname: firstName,
-        email,
-        password,
-        role: accountType,
-        lastname: lastName,
-        contacno: contact,
-        gender,        
-      }).then((res)=>{
+      await axios.post(signupEndpoint, bodyData).then((res)=>{
         console.log('Signup successfull')
         console.log(res.data)
       });
