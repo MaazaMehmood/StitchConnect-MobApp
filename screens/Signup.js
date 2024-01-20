@@ -25,8 +25,7 @@ function Signup ({ navigation, route }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleSignup = async() => {
-    
-    console.log('Sending signup request with data:', {
+    const bodyData = {
       firstname: firstName,
       email,
       password,
@@ -34,7 +33,8 @@ function Signup ({ navigation, route }) {
       lastname: lastName,
       contactno: contact,
       gender,
-    });
+    }
+    console.log('Sending signup request with data:', bodyData);
     // send the data to server for registration
 
     try{
