@@ -87,7 +87,7 @@ function Portfolio  ({ navigation, user }) {
                     <Text style={[styles.buttonText, { color: '#571DD2'}]}>Message</Text>
                   </TouchableOpacity>
                   
-                  { user.userType === 'customer' && (
+                  { user.role === 'customer' && (
                     <TouchableOpacity
                       style={[styles.button, { backgroundColor: '#9579E3' }]}
                       onPress={handleOrder}
@@ -127,7 +127,7 @@ function Portfolio  ({ navigation, user }) {
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 }}>
                 <Text style={{ fontWeight: '500', fontSize: 16, color: '#525F7F' }}>Gallery</Text>
-                { user.userType === "business" && (
+                { user.role === "tailor" && (
                   <TouchableOpacity 
                   // onPress={}
                   >
@@ -207,8 +207,8 @@ function Portfolio  ({ navigation, user }) {
                   <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                       <Image source={require('../assets/images/style(1).jpg')} resizeMode="cover" style={styles.modalImage} />
-                      { user.userType === "customer" && (<Text>Rs. {price}</Text>)}
-                      { user.userType === "business" && (
+                      { user.role === "customer" && (<Text>Rs. {price}</Text>)}
+                      { user.role === "tailor" && (
                         <>
                           <TextInput
                             style={styles.priceInput}

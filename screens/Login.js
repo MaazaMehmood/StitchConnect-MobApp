@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Image,TouchableOpacity, Keyboard,TouchableWithoutFeedback , StyleSheet } from 'react-native';
+import { View, Text, Image,TouchableOpacity, Keyboard,TouchableWithoutFeedback , StyleSheet, Alert } from 'react-native';
 import { TextInput, RadioButton } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { login } from '../store/userActions';
-
+import axios from 'axios';
 
 function Login ({ login ,  navigation }) {
   
-  const [nameEmail, setNameEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('');
   
@@ -15,21 +15,39 @@ function Login ({ login ,  navigation }) {
     navigation.navigate('Account');
   };
 
-  const handleLogin = () => {
-    // login logic, API calls, authentication, etc.
+  const handleLogin = async () => {
 
-    console.log({ nameEmail });
-    console.log({ accountType });
-
-    const user = { name: nameEmail, userType: accountType };
+    const user = { email, password, role: accountType };
     console.log(user); 
-    
-    if (accountType)  {
-      login(user);
-      navigation.navigate('Home');
-    }
+    try{
 
-  };
+      await axios.
+      post('http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/auth/login', user
+      ,{headers: {'content-type': 'application/x-www-form-urlencoded'}})
+      .then((res)=>{
+       
+        console.log(res.data);
+        if (res.data.message === "Invalid email or password") {
+          Alert.alert('Invalid credentials', 'user not exist',);
+          console.log("Invalid email or password");
+        } 
+        else if (res.data.message === "ok") {
+          console.log(res.data);
+          if (user) {
+            login(user);
+            navigation.navigate('Home');
+          }
+          Alert.alert('', 'Login successful',)
+          console.log('Login successful');
+          setEmail('');
+          setPassword('');
+          setAccountType('');
+        }
+      });
+    } catch (error) {
+      console.error('login failed:', error?.message);
+    }
+};
 
   return (
     <>
@@ -45,9 +63,9 @@ function Login ({ login ,  navigation }) {
 
           <TextInput
               style={styles.input}
-              label="Username / Email"
-              onChangeText={(text) => setNameEmail(text)}
-              value={nameEmail}
+              label="Email"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
               clearTextOnFocus={true}
               underlineColor='#9999'
               activeUnderlineColor='#9579E3'
@@ -65,7 +83,7 @@ function Login ({ login ,  navigation }) {
           <RadioButton.Group onValueChange={newValue => setAccountType(newValue)} value={accountType}  >
               <View  style={{flexDirection: 'row', alignItems: 'center', marginVertical: 10, marginRight: 150}}>
                 <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
-                  <RadioButton value="business" />
+                  <RadioButton value="tailor" />
                   <Text style={{color: '#444'}}>Business</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >

@@ -22,7 +22,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = ({ navigation, user, logout}) => {
 
   const handleNotifications = () => {
-    { user.userType === "business"? navigation.navigate('Business Notification') : navigation.navigate('Notifications') 
+    { user.role === "tailor"? navigation.navigate('Business Notification') : navigation.navigate('Notifications') 
     }
   };
 
@@ -62,7 +62,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             return <CustomIcon iconName="person-outline"  color={activeColor} />
           }}}
         />
-        { user.userType === "business" && (
+        { user.role === "tailor" && (
           <>
             <Drawer.Screen name="Dashboard" component={Dashboard} 
               options={{ drawerIcon: ({ focused }) => {
@@ -88,7 +88,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             />
           </>
         )}
-        { user.userType === "customer" && (
+        { user.role === "customer" && (
           <>
             <Drawer.Screen name="Favorites" component={Favorites} 
               options={{

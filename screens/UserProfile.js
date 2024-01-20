@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } fr
 import { TextInput } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
 import { connect } from 'react-redux';
+import * as DocumentPicker from 'expo-document-picker';
 
 
 function UserProfile ({ user }) {
@@ -52,7 +53,7 @@ function UserProfile ({ user }) {
     //   garmentsStyle: editedGarmentsStyle
     // });
     Alert.alert('Saved',
-    'Changes have been saved successfully',);
+    'Changes saved successfully',);
   };
 
   // Editable fields
@@ -67,17 +68,39 @@ function UserProfile ({ user }) {
   const [editedGarmentsType, setEditedGarmentsType] = useState('');
   const [editedGarmentsStyle, setEditedGarmentsStyle] = useState('');
 
+  const [pickedDocumentUri, setPickedDocumentUri] = useState(null);
 
+  const handleImagePicker = async () => {
+    try {
+      const result = await DocumentPicker.getDocumentAsync();
+      if (result.type === 'success' && result.uri) {
+        console.log('Document picked successfully:', result.uri);
+        setPickedDocumentUri(result.uri);
+      } else {
+        console.log('Document picking cancelled');
+      }
+    } catch (err) {
+      console.log('Document picking failed', err);
+    }
+  }
 
   return (
     <ScrollView 
       contentContainerStyle={styles.scrollViewContainer}
       showsVerticalScrollIndicator={false}
     >
-      <Image
-        source={require('../assets/images/formaluser.png')} 
-        style={styles.profileImage}
-      />  
+      <View style={{ position: 'relative'}}>
+        <Image
+          source={pickedDocumentUri ? { uri: pickedDocumentUri } : require('../assets/images/formaluser.png')} 
+          style={styles.profileImage}
+        />
+        {isEditing? (
+        <TouchableOpacity onPress={handleImagePicker}>
+          <Feather name="edit" size={21} color="#000000" style={styles.editIcon}  />
+        </TouchableOpacity>) : ''
+        }  
+        
+      </View>
        
       <TextInput
         style={styles.input}
@@ -139,7 +162,7 @@ function UserProfile ({ user }) {
         activeUnderlineColor='#9579E3'
       />
 
-      { user.userType === "business" && (
+      { user.role === "tailor" && (
         <>
           
           <TextInput
@@ -214,6 +237,14 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: 75,
     marginBottom: 30,
+  },
+  editIcon: {
+    position: 'absolute',
+    bottom: 30,
+    right: -2,
+    backgroundColor: 'white', 
+    padding: 5,
+    borderRadius: 10,
   },
   input: {
     alignItems: 'left',

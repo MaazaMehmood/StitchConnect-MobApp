@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity,TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Dimensions, Alert } from 'react-native';
 import { TextInput, RadioButton, Checkbox } from 'react-native-paper';
 import axios from 'axios';
-
 
 
 const signupEndpoint = 'http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/auth/signUp';
@@ -16,7 +15,7 @@ function Signup ({ navigation, route }) {
   const [contact, setContact] = useState('');
   const [gender, setGender] = useState('');
 
-  const { accountType } = route.params;
+  const { role } = route.params;
   
   const [address, setAddress] = useState('');
   const [businessDescription, setBusinessDescription] = useState('');
@@ -31,7 +30,7 @@ function Signup ({ navigation, route }) {
       firstname: firstName,
       email,
       password,
-      role: accountType,
+      role,
       lastname: lastName,
       contactno: contact,
       gender,
@@ -39,24 +38,27 @@ function Signup ({ navigation, route }) {
     // send the data to server for registration
 
     try{
-
-      await axios.post(signupEndpoint, {
+      await axios.post(signupEndpoint, { 
         firstname: firstName,
         email,
         password,
         role: accountType,
         lastname: lastName,
-        contacno: contact,
+        contactno: contact,
         gender,        
-      }).then((res)=>{
-        console.log('Signup successfull')
-        console.log(res.data)
+      }), {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+      .then((res)=>{
+        if (res.data.message === "already exist") {
+          alert("already exist");
+        } 
+        else if (res.data.message === "ok") {
+          Alert.alert('', 'Signup successful',);
+          console.log('Signup successful');
+          console.log(res.data);
+          navigation.navigate('Login');
+        }
       });
-
-      navigation.navigate('Login');
-
     } catch (error) {
-
       console.error('Signup failed:', error?.message);
     }
   };
