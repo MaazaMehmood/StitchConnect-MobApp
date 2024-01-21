@@ -56,7 +56,7 @@ function Portfolio  ({ navigation, user }) {
       <View style={styles.profileContainer}>
 
         <ImageBackground
-          source={require('../assets/images/bg.png')}
+          source={require('../assets/images/bg(4).png')}
           style={styles.profileBackground}
         >
 

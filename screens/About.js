@@ -44,7 +44,7 @@ function About () {
   return (
     <ScrollView style={styles.container}>
         <ImageBackground 
-        source={require('../assets/images/bg.png')}
+        source={require('../assets/images/bg(4).png')}
         style={styles.header}>
             <View style={{ flexDirection:'row', justifyContent: 'left', alignItems: 'center'}}>
                 <Text style={{ fontSize: 24, color: '#FFFFFF', fontWeight: '500' }}>About</Text>

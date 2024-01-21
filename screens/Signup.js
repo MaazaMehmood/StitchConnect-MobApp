@@ -42,14 +42,14 @@ function Signup ({ navigation, route }) {
         firstname: firstName,
         email,
         password,
-        role: accountType,
+        role,
         lastname: lastName,
         contactno: contact,
         gender,        
-      }), {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+      })
       .then((res)=>{
         if (res.data.message === "already exist") {
-          alert("already exist");
+          alert("User Already Exist");
         } 
         else if (res.data.message === "ok") {
           Alert.alert('', 'Signup successful',);
@@ -74,7 +74,7 @@ function Signup ({ navigation, route }) {
        
     <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
     <ImageBackground
-        source={require('../assets/images/bg.png')}
+        source={require('../assets/images/bg(4).png')}
         style={styles.ImageBackground}
     >
       <ScrollView  showsVerticalScrollIndicator={false}>
@@ -84,7 +84,7 @@ function Signup ({ navigation, route }) {
           <View style={styles.view} >
             <TextInput
                 style={styles.input}
-                label="First Name"
+                label="First Name*"
                 onChangeText={(text) => setFirstName(text)}
                 value={firstName}
                 underlineColor='#9999'
@@ -92,7 +92,7 @@ function Signup ({ navigation, route }) {
             />
             <TextInput
                 style={styles.input}
-                label="Last Name*"
+                label="Last Name"
                 onChangeText={(text) => setLastName(text)}
                 value={lastName}
                 underlineColor='#9999'
@@ -100,7 +100,7 @@ function Signup ({ navigation, route }) {
             />
             <TextInput
                 style={styles.input}
-                label="Email"
+                label="Email*"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
                 underlineColor='#9999'
@@ -117,18 +117,10 @@ function Signup ({ navigation, route }) {
             />
             <TextInput
                 style={styles.input}
-                label="Contact*"
+                label="Contact"
                 onChangeText={(text) => setContact(text)}
                 value={contact}
                 keyboardType='numeric'
-                underlineColor='#9999'
-                activeUnderlineColor='#9579E3'
-            />
-            <TextInput
-                style={styles.input}
-                label="Address / Location*"
-                onChangeText={(text) => setAddress(text)}
-                value={address}
                 underlineColor='#9999'
                 activeUnderlineColor='#9579E3'
             />
@@ -147,10 +139,18 @@ function Signup ({ navigation, route }) {
 
 
 
-            {accountType === 'Business Account' && (
+            {role === 'tailor' && (
               <View>
 
                 <Text style={{ fontSize: 16, fontWeight: 400, marginVertical: 30 }}> Business Details</Text>
+                  <TextInput
+                      style={styles.input}
+                      label="Address / Location*"
+                      onChangeText={(text) => setAddress(text)}
+                      value={address}
+                      underlineColor='#9999'
+                      activeUnderlineColor='#9579E3'
+                  />
         
                   <TextInput
                       multiline={true}

@@ -15,7 +15,7 @@ const FavouriteCards = ({ tailor,  id, removeFavorites }) => {
   return (
     <View style={styles.card}>
         <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
-            <Image source={require('../../assets/images/image.jpg')} style={styles.image} />
+            <Image source={require('../../assets/images/9.jpg')} style={styles.image} />
             <View style={styles.textContainer}>
                 <Text style={styles.name}>{tailor.name}</Text>
                 <Text style={styles.category}>{tailor.category}</Text>

@@ -27,7 +27,7 @@ function Dashboard ({ navigation, user }) {
 
       {/* Header */}
       <ImageBackground 
-        source={require('../../assets/images/bg.png')}
+        source={require('../../assets/images/bg(4).png')}
         style={styles.header}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 20}}>
           <TouchableOpacity onPress={handleBack}>

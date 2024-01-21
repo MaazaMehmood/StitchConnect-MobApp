@@ -4,106 +4,123 @@ import { TextInput, RadioButton } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { login } from '../store/userActions';
 import axios from 'axios';
+import { Formik } from 'formik';
+import yup  from 'yup';
+import validationSchema from '../form schema/schema';
+
 
 function Login ({ login ,  navigation }) {
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [accountType, setAccountType] = useState('');
   
   const handleSignup = () => {
     navigation.navigate('Account');
   };
 
-  const handleLogin = async () => {
-
-    const user = { email, password, role: accountType };
-    console.log(user); 
+  const handleLogin = async (values) => {
+    console.log(values); 
     try{
 
       await axios.
-      post('http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/auth/login', user
+      post('http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/auth/login', values
       ,{headers: {'content-type': 'application/x-www-form-urlencoded'}})
       .then((res)=>{
-       
-        console.log(res.data);
+      
         if (res.data.message === "Invalid email or password") {
-          Alert.alert('Invalid credentials', 'user not exist',);
-          console.log("Invalid email or password");
+          console.log(res.data);
+          Alert.alert('User Not Exist', 'Invalid credentials',);
         } 
         else if (res.data.message === "ok") {
           console.log(res.data);
-          if (user) {
-            login(user);
-            navigation.navigate('Home');
+  
+          if (res.data.success) {
+            login(values);
+            values.role === 'customer' ? 
+             navigation.navigate('Home')
+              :  navigation.navigate('Dashboard');
           }
-          Alert.alert('', 'Login successful',)
+
+          Alert.alert('Login', 'successful',)
           console.log('Login successful');
-          setEmail('');
-          setPassword('');
-          setAccountType('');
         }
-      });
+     });
     } catch (error) {
       console.error('login failed:', error?.message);
     }
-};
+  };
 
   return (
     <>
     <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}>
-      <View style={styles.container}>
-          <Image
-              source={require('../assets/images/SC.png')}
-              style={styles.logoImage}
-              resizeMode="contain"
-          />
+      <Formik
+        initialValues={{ email: '', password: '', role: '' }}
+        onSubmit={handleLogin}
+        validationSchema={validationSchema}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+          <View style={styles.container}>
+            <Image
+                source={require('../assets/images/SC.png')}
+                style={styles.logoImage}
+                resizeMode="contain"
+            />
 
-          <Text style={styles.title}>Login</Text>
+            <Text style={styles.title}>Login</Text>
 
-          <TextInput
-              style={styles.input}
-              label="Email"
-              onChangeText={(text) => setEmail(text)}
-              value={email}
-              clearTextOnFocus={true}
-              underlineColor='#9999'
-              activeUnderlineColor='#9579E3'
-          />
-          <TextInput
-              style={styles.input}
-              label="Password"
-              onChangeText={(text) => setPassword(text)}
-              value={password}
-              clearTextOnFocus={true}
-              underlineColor='#9999'
-              activeUnderlineColor='#9579E3'
-              secureTextEntry
-          />
-          <RadioButton.Group onValueChange={newValue => setAccountType(newValue)} value={accountType}  >
-              <View  style={{flexDirection: 'row', alignItems: 'center', marginVertical: 10, marginRight: 150}}>
-                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
+            <TextInput
+                style={styles.input}
+                label="Email"
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                error={errors.email}
+                clearTextOnFocus={true}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
+            />
+            <TextInput
+                style={styles.input}
+                label="Password"
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values.password}
+                error={errors.password}
+                clearTextOnFocus={true}
+                underlineColor='#9999'
+                activeUnderlineColor='#9579E3'
+                secureTextEntry
+            />
+            <RadioButton.Group
+              onValueChange={(newValue) => handleChange('role')(newValue)}
+              value={values.role}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, marginRight: 150 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center' }} >
                   <RadioButton value="tailor" />
-                  <Text style={{color: '#444'}}>Business</Text>
+                  <Text style={{ color: '#444' }}>Business</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center'}} >
+                <View style={{ flexDirection: 'row', justifyContent: 'start', alignItems: 'center' }} >
                   <RadioButton value="customer" />
-                  <Text style={{color: '#444'}}>Customer</Text>
+                  <Text style={{ color: '#444' }}>Customer</Text>
                 </View>
               </View>
             </RadioButton.Group>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleLogin}
-          >
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleSubmit}
+            >
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={handleSignup} >  
-              <Text style={styles.login}>Don't have an account? Sign up</Text>
-          </TouchableOpacity>
-      </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
+              <Text style={styles.signup}>Don't have an account?</Text>
+              <TouchableOpacity onPress={(handleSignup)}  >  
+                  <Text style={[styles.signup, { textDecorationLine: 'underline'}]}> Sign up</Text>
+              </TouchableOpacity>
+            </View>
+            
+          </View>
+        )}
+      </Formik>
     </TouchableWithoutFeedback>
     </>
   );
@@ -154,12 +171,10 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 14,
   },
-  login: {
+  signup: {
     color: '#9579E3',
-    textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',
-    marginTop: 20
   }
 });
 

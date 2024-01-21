@@ -29,7 +29,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
 
     return (
       <Drawer.Navigator 
-        initialRouteName="Home"
+        initialRouteName={user.role === 'customer' ? 'Home': 'Dashboard'}
         screenOptions={{
           drawerActiveTintColor: '#ffff', // color of the active component
           drawerActiveBackgroundColor: '#9579E3',
@@ -43,19 +43,37 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
           } 
         }}
       >
-        <Drawer.Screen name="Home" component={Home} 
-          options={( ) => ({
-            headerTitle: 'Stitch Connect',
-            headerRight: () => (
-              <TouchableOpacity style={{ marginRight: 15 }} onPress={handleNotifications}>
-                <CustomIcon iconName="notifications-outline" color="#000000" />
-              </TouchableOpacity>
-            ),
-            drawerIcon: ({ focused }) =>  {
-              const activeColor = focused ? 'white' : 'indigo';
-              return <CustomIcon iconName="home-outline" color={activeColor} />}
-          })}
-        />
+         { user.role === "customer" && (
+          <>
+            <Drawer.Screen name="Home" component={Home} 
+              options={( ) => ({
+                headerTitle: 'Stitch Connect',
+                headerRight: () => (
+                  <TouchableOpacity style={{ marginRight: 15 }} onPress={handleNotifications}>
+                    <CustomIcon iconName="notifications-outline" color="#000000" />
+                  </TouchableOpacity>
+                ),
+                drawerIcon: ({ focused }) =>  {
+                  const activeColor = focused ? 'white' : 'indigo';
+                  return <CustomIcon iconName="home-outline" color={activeColor} />}
+              })}
+            />
+            <Drawer.Screen name="Favorites" component={Favorites} 
+              options={{
+                drawerIcon: ({ focused }) => {
+                const activeColor = focused ? 'white' : '#9F4BC5';
+                return <CustomIcon iconName="heart-outline" color={activeColor} />
+              }}} 
+            />
+            <Drawer.Screen name="Notifications" component={CustomerNotification} 
+                options={{ drawerIcon: ({ focused }) => {
+                  const activeColor = focused ? 'white' : '#2ecc71';
+                  return <CustomIcon iconName="notifications-outline" color={activeColor} />
+                },
+              }} 
+            />
+          </>
+        )}
         <Drawer.Screen name="Profile" component={UserProfile}  
           options={{ drawerIcon: ({ focused }) => {
             const activeColor = focused ? 'white' : 'brown';
@@ -88,24 +106,7 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
             />
           </>
         )}
-        { user.role === "customer" && (
-          <>
-            <Drawer.Screen name="Favorites" component={Favorites} 
-              options={{
-                drawerIcon: ({ focused }) => {
-                const activeColor = focused ? 'white' : '#9F4BC5';
-                return <CustomIcon iconName="heart-outline" color={activeColor} />
-              }}} 
-            />
-            <Drawer.Screen name="Notifications" component={CustomerNotification} 
-                options={{ drawerIcon: ({ focused }) => {
-                  const activeColor = focused ? 'white' : '#2ecc71';
-                  return <CustomIcon iconName="notifications-outline" color={activeColor} />
-                },
-              }} 
-            />
-            </>
-        )}
+       
         <Drawer.Screen name="Settings" component={Settings} 
           options={{ drawerIcon: ({ focused }) => {
             const activeColor = focused ? 'white' : '#3498db';

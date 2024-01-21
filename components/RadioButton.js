@@ -9,10 +9,10 @@ const RadioButton = ({ options, selectedOption, onSelect }) => {
       <TouchableOpacity
         key={index} 
         item={option}
-        style={[styles.radioOption, { backgroundColor: selectedOption === option ? '#9579E3' : 'white' }, { borderColor: selectedOption === option ? 'white' : '#A98ADC' }]}
-        onPress={() => onSelect(option)}
+        style={[styles.radioOption, { backgroundColor: selectedOption === option.toLowerCase() ? '#9579E3' : 'white' }, { borderColor: selectedOption === option ? 'white' : '#A98ADC' }]}
+        onPress={() => onSelect(option.toLowerCase())}
       >
-        <Text style={[styles.radioText, {  color: selectedOption === option ? 'white' : '#9579E3' }]}>{option}</Text>
+        <Text style={[styles.radioText, {  color: selectedOption === option.toLowerCase() ? 'white' : '#9579E3' }]}>{option}</Text>
       </TouchableOpacity>
     ))}
     

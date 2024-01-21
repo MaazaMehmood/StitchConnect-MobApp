@@ -11,7 +11,7 @@ function Onboarding ({ navigation }) {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/images/bg.png')}
+        source={require('../assets/images/bg(4).png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       />

@@ -5,11 +5,12 @@ import {RadioButton} from '../components/RadioButton';
 
 function Account ({ navigation }) {
  
-  const [accountType, setSAccountType] = useState('Customer Account');
-  const accountOptions = ['Customer Account', 'Business Account'];
+  const [accountType, setSAccountType] = useState('customer');
+  const accountOptions = ['Customer ', 'Tailor'];
 
   const handleAccountChange = (option) => {
-    setSAccountType(option);
+     setSAccountType(option);
+     console.log(option);
      navigation.navigate('Signup',  { role : option });
   };
 
@@ -36,9 +37,13 @@ function Account ({ navigation }) {
           />
       </View>
 
-      <TouchableOpacity onPress={handleLogin}> 
-        <Text style={styles.login}>Already have an account? login</Text>  
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
+        <Text style={styles.login}>Already have an account?</Text>
+        <TouchableOpacity onPress={handleLogin}  >  
+            <Text style={[styles.login, { textDecorationLine: 'underline'}]}>Login</Text>
+        </TouchableOpacity>
+      </View>
+
     </View>      
   );
 };
@@ -60,16 +65,15 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   title: {
+    fontWeight: '400',
     letterSpacing: .5,
     fontSize: 20,
     marginBottom: 10,
   },
   login: {
     color: '#9579E3',
-    textDecorationLine: 'underline',
     fontSize: 14,
     fontStyle: 'italic',
-    margin: 5
   }
 });
 
