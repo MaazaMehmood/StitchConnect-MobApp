@@ -11,7 +11,7 @@ const Cards = ({ navigation, tailor, width , height}) => {
   return (
     <TouchableOpacity onPress={handlePortfolio}>
     <View style={[styles.card, {width: width, height: height}]}>
-      <Image source={require('../../assets/images/1.jpg')} style={styles.image} />
+      <Image source={tailor.image} style={styles.image} />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 5}} >
         <View style={styles.textContainer}>
           <Text style={styles.name}>{tailor.name}</Text>

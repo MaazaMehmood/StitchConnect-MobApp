@@ -4,6 +4,7 @@
     "slug": "stitch-connect",
     "version": "1.0.0",
     "entryPoint": "./App.js",
+    "main": "./App.js",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,6 +12,9 @@
       "image": "./assets/images/SC.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "packagerOpts": {
+      "config": "metro.config.js"
     },
     "start": "expo start",
     "assetBundlePatterns": [

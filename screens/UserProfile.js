@@ -4,71 +4,51 @@ import { TextInput } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import * as DocumentPicker from 'expo-document-picker';
+import axios from 'axios';
 
 
 function UserProfile ({ user }) {
 
-  // const [userData, setUserData] = useState(null); // State to store user data
-
-  // fetching user data from an API 
-//   useEffect(() => {
-
-//     const fetchUserData = async () => {
-//       try {
-//         const response = await fetch('');
-//         const data = await response.json();
-//         setUserData(data);
-
-//       } catch (error) {
-//         console.error('Error fetching user data:', error);
-//       }
-//     };
-
-//     fetchUserData();
-//   }, []);
-  // console.log(route.params);
-  // const { accountType } = route.params;
-
-  // const { username, email, password, contact, gender, address, businessDescription, garmentsType, garmentsStyle } = userData;
-
+  const [pickedDocumentUri, setPickedDocumentUri] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  const [editedUsername, setEditedUsername] = useState(`${user.firstname} ${user.lastname}`);
+  const [editedEmail, setEditedEmail] = useState(user.email);
+  const [editedContact, setEditedContact] = useState(user.contactno);
+  const [editedGender, setEditedGender] = useState(user.gender);
+  const [editedRole, setEditedRole] = useState(user.role);
+  const [editedDescription, setEditedDescription] = useState(user.businessdescription);
+  const [editedGarmentsType, setEditedGarmentsType] = useState(user.garmenttype);
+  const [editedGarmentsStyle, setEditedGarmentsStyle] = useState(user.garmentstyle);
 
   const handleEdit = () => {
     setIsEditing(true);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setIsEditing(false);
-    // Update the userDetails object with edited values
-    // setUserData({
-    //   ...userData,
-    //   username: editedUsername,
-    //   email: editedEmail,
-    //   password: editedPassword,
-    //   contact: editedContact,
-    //   gender: editedGender,
-    //   address: editedAddress,
-    //   desc: editedDescription,
-    //   garmentsType: editedGarmentsType,
-    //   garmentsStyle: editedGarmentsStyle
-    // });
-    Alert.alert('Saved',
-    'Changes saved successfully',);
+    const editedData = {
+      firstname : editedName,
+      email: editedEmail,
+      contactno: editedContact,
+      businessdescription: editedDescription,
+      garmenttype: editedGarmentsType,
+      garmentstyle: editedGarmentsStyle,
+    };
+    try{
+
+      await axios.
+      put('http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/customer/editCustomer/659c3baf6a1bbb863b22104c', editedData
+      ,{headers: {'content-type': 'application/x-www-form-urlencoded'}})
+      .then((res)=>{
+          Alert.alert('Saved', 'Changes saved successfully',);
+      });
+    } catch (error) {
+      console.error('something went wrong', error?.message);
+      Alert.alert('something went wrong', error?.message,);
+    }
   };
 
-  // Editable fields
-  // const [editedUsername, setEditedUsername] = useState(username); //username, email, pass, add hunge hr field mai ju oper se destructure hurhe hain
-  const [editedUsername, setEditedUsername] = useState('');
-  const [editedEmail, setEditedEmail] = useState('');
-  const [editedPassword, setEditedPassword] = useState('');
-  const [editedContact, setEditedContact] = useState('');
-  const [editedGender, setEditedGender] = useState('');
-  const [editedAddress, setEditedAddress] = useState('');
-  const [editedDescription, setEditedDescription] = useState('');
-  const [editedGarmentsType, setEditedGarmentsType] = useState('');
-  const [editedGarmentsStyle, setEditedGarmentsStyle] = useState('');
-
-  const [pickedDocumentUri, setPickedDocumentUri] = useState(null);
 
   const handleImagePicker = async () => {
     try {
@@ -104,8 +84,8 @@ function UserProfile ({ user }) {
        
       <TextInput
         style={styles.input}
-        label='username'
-        value={isEditing ? editedUsername : ''} // '' ki jaga name email .. ki value aegi 
+        label='Username'
+        value={editedUsername} 
         onChangeText={text => setEditedUsername(text)}
         editable={isEditing}
         underlineColor='#9999'
@@ -115,18 +95,8 @@ function UserProfile ({ user }) {
       <TextInput
         style={styles.input}
         label='Email'
-        value={isEditing ? editedEmail : ''}
+        value={editedEmail}
         onChangeText={text => setEditedEmail(text)}
-        editable={isEditing}
-        underlineColor='#9999'
-        activeUnderlineColor='#9579E3'
-      />
-    
-      <TextInput
-        style={styles.input}
-        label='Password'
-        value={isEditing ? editedPassword : ''}
-        onChangeText={text => setEditedPassword(text)}
         editable={isEditing}
         underlineColor='#9999'
         activeUnderlineColor='#9579E3'
@@ -135,7 +105,7 @@ function UserProfile ({ user }) {
       <TextInput
         style={styles.input}
         label='Contact'
-        value={isEditing ? editedContact : ''}
+        value={editedContact}
         onChangeText={text => setEditedContact(text)}
         editable={isEditing}
         underlineColor='#9999'
@@ -144,10 +114,9 @@ function UserProfile ({ user }) {
 
       <TextInput
             style={styles.input}
-            label='Address'
-            value={isEditing ? editedAddress : ''}
-            onChangeText={text => setEditedAddress(text)}
-            editable={isEditing}
+            label='Account'
+            value={editedRole}
+            onChangeText={text => setEditedRole(text)}
             underlineColor='#9999'
             activeUnderlineColor='#9579E3'
       />
@@ -155,9 +124,8 @@ function UserProfile ({ user }) {
       <TextInput
         style={styles.input}
         label='Gender'
-        value={isEditing ? editedGender : ''}
+        value={editedGender}
         onChangeText={text => setEditedGender(text)}
-        editable={isEditing}
         underlineColor='#9999'
         activeUnderlineColor='#9579E3'
       />
@@ -168,7 +136,7 @@ function UserProfile ({ user }) {
           <TextInput
             style={styles.input}
             label='Business Description'
-            value={isEditing ? editedDescription : ''}
+            value={editedDescription}
             onChangeText={text => setEditedDescription(text)}
             editable={isEditing}
             underlineColor='#9999'
@@ -178,7 +146,7 @@ function UserProfile ({ user }) {
           <TextInput
             style={styles.input}
             label='Garment Type'
-            value={isEditing ? editedGarmentsType : ''}
+            value={editedGarmentsType}
             onChangeText={text => setEditedGarmentsType(text)}
             editable={isEditing}
             underlineColor='#9999'
@@ -188,7 +156,7 @@ function UserProfile ({ user }) {
           <TextInput
             style={styles.input}
             label='Garment Style'
-            value={isEditing ? editedGarmentsStyle : ''}
+            value={ editedGarmentsStyle}
             onChangeText={text => setEditedGarmentsStyle(text)}
             editable={isEditing}
             underlineColor='#9999'

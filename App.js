@@ -14,7 +14,7 @@ import Login from './screens/Login';
 import {Account} from './screens/Account';
 import {Home} from './screens/Home';
 import UserProfile from './screens/UserProfile';
-import Dashboard from './screens/Dashboard/Dashboard';
+import {Dashboard} from './screens/Dashboard/Dashboard';
 import Portfolio from './screens/Portfolio';
 import {Settings} from './screens/Settings';
 import { About } from './screens/About';
@@ -47,7 +47,7 @@ function App() {
             <Stack.Screen name="Search" component={ Search }  options={{headerTitle: 'Stitch Connect' , headerShadowVisible: false}}/>
 
             <Stack.Screen name="Profile" component={ UserProfile }   />
-            <Stack.Screen name="Dashboard" component={ Dashboard }   options={{ headerShown: false}} />
+            <Stack.Screen name="Dashboard" component={ DrawerNavigator }   options={{ headerShown: false}} />
             <Stack.Screen name="Portfolio" component={ Portfolio } options={{ headerShown: false}}/>
             <Stack.Screen name="Measurements" component={ Measurements } />
             <Stack.Screen name="Order" component={ Order }  options={{ headerShadowVisible: false, headerTitle: 'My Order'}} />

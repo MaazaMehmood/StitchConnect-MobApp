@@ -32,7 +32,7 @@ function Login ({ login ,  navigation }) {
           console.log(res.data);
   
           if (res.data.success) {
-            login(values);
+            login(res.data.data);
             values.role === 'customer' ? 
              navigation.navigate('Home')
               :  navigation.navigate('Dashboard');

@@ -1,8 +1,13 @@
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: ['react-native-reanimated/plugin'],
-    plugins: ['react-native-paper/babel'],
-  };
+module.exports = function (api) {
+    api.cache(true);
+    return {
+        presets: ['babel-preset-expo'],
+        plugins: [
+          'babel-plugin-inline-import',
+          'react-native-reanimated/plugin',
+          'react-native-paper/babel',
+        ],
+    };
+    
 };
+  

@@ -40,7 +40,7 @@ function Dashboard ({ navigation, user }) {
         </View>
         
         <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginVertical: 5}}>
-          <Text style={styles.userName}>{user.name}</Text>
+          <Text style={styles.userName}>{user.firstname.toUpperCase()} {user.lastname.toUpperCase()}</Text>
         </View>
       </ImageBackground>
 
