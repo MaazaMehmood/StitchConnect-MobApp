@@ -33,7 +33,7 @@ function Portfolio  ({ navigation, user }) {
   } 
 
   const handleBack = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Dashboard');
   }
 
   const handleOrder = () => {
@@ -46,8 +46,6 @@ function Portfolio  ({ navigation, user }) {
   };
 
   const handleCloseModal = () => {
-    // Implement logic to set the price for the selected image
-    // You can update your data structure or state accordingly
     setModalVisible(false);
   };
   
@@ -80,12 +78,12 @@ function Portfolio  ({ navigation, user }) {
               <View style={styles.info}>
              
                 <View style={{ marginTop: 20, paddingBottom: 24, flexDirection: 'row', justifyContent: 'center' }}>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={[styles.button, { borderWidth: 1, borderColor: '#571DD2', backgroundColor: 'transparent' }]}
                     // onPress={}
                   >
                     <Text style={[styles.buttonText, { color: '#571DD2'}]}>Message</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   
                   { user.role === 'customer' && (
                     <TouchableOpacity

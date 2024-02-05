@@ -29,7 +29,7 @@ function Dashboard ({ navigation, user }) {
       <ImageBackground 
         source={require('../../assets/images/bg(4).png')}
         style={styles.header}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 20}}>
+        {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 20}}>
           <TouchableOpacity onPress={handleBack}>
               <CustomIcon iconName="arrow-back-outline" color="#ffff" />
           </TouchableOpacity>
@@ -37,9 +37,9 @@ function Dashboard ({ navigation, user }) {
           <TouchableOpacity>
               <CustomIcon iconName="notifications-outline" color="#ffff" />
           </TouchableOpacity>
-        </View>
+        </View> */}
         
-        <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginVertical: 5}}>
+        <View style={{ width: '95%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'center', marginVertical: 0}}>
           <Text style={styles.userName}>{user.firstname.toUpperCase()} {user.lastname.toUpperCase()}</Text>
         </View>
       </ImageBackground>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   userName: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '500',
     paddingHorizontal: 5,
     color: '#ffffff'

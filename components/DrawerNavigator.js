@@ -87,7 +87,6 @@ const DrawerNavigator = ({ navigation, user, logout}) => {
                 const activeColor = focused ? 'white' : '#22CCDD';
                 return <MaterialCommunityIcons name="view-dashboard-outline" size={22} color={activeColor} />
               },
-              headerShown: false
             }} 
             />
             <Drawer.Screen name="Portfolio" component={Portfolio} 

@@ -28,19 +28,21 @@ function UserProfile ({ user }) {
   const handleSave = async () => {
     setIsEditing(false);
     const editedData = {
-      firstname : editedName,
+      firstname : editedUsername,
       email: editedEmail,
       contactno: editedContact,
       businessdescription: editedDescription,
       garmenttype: editedGarmentsType,
       garmentstyle: editedGarmentsStyle,
     };
+    console.log(editedData);
     try{
 
       await axios.
       put('http://ec2-13-53-33-97.eu-north-1.compute.amazonaws.com/api/v1/customer/editCustomer/659c3baf6a1bbb863b22104c', editedData
       ,{headers: {'content-type': 'application/x-www-form-urlencoded'}})
       .then((res)=>{
+        console.log(res.data)
           Alert.alert('Saved', 'Changes saved successfully',);
       });
     } catch (error) {
